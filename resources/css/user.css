@@ -1,0 +1,649 @@
+/* biru tua #638ec4 */
+/* biru muda #82aee6 */
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: #fff2d7;
+}
+.user-navbar .nav-link{
+    text-transform: uppercase;
+}
+
+.nav-item a{
+    color: white;
+}
+
+.nav-link{
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover{
+    color: #09643b;
+    transform: translateY(-3px);
+}
+
+.nav-btn-whatsapp{
+    border: 2px solid #09643b;
+    border-radius: 10px;
+    padding-inline: 25px !important;
+    padding-block: 5px !important;
+    text-transform: capitalize !important;
+    color: #09643b !important; 
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn-whatsapp::before{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scaleX(0);
+    width: 150%;
+    height: 150%;
+    background-color: #09643b;
+    content: '';
+    transform-origin: center;
+    transition: all 0.4s ease ;
+    z-index: -1;
+}
+
+.nav-btn-whatsapp:hover::before{
+    transform: translate(-50%, -50%) scaleX(1);
+}
+
+.nav-btn-whatsapp:hover{
+    color: white !important;
+}
+
+.brand-logo{
+    width: 150px;
+}
+
+.home-cover{
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #82aee6, #6ca0e0);
+    overflow: hidden;
+}
+
+.home-cover .btn-lihat-jadwal-umroh{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to right, #e2a816, #e2c477);
+    padding-block: 10px;
+    padding-inline: calc(2.5em + 1vw);
+    border-radius: 10px;
+    z-index: 3;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: calc(1rem + 0.5vw);
+    box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+
+.btn-lihat-jadwal-umroh:hover{
+    transform: translate(-50%, -60%);
+}
+
+.home-cover img{
+    position: absolute;
+    object-fit: cover;
+    bottom: 0;
+    z-index: 2;
+    filter: drop-shadow(5px 0px 15px rgba(0,0,0,0.5))
+}
+@media (min-height: 1000px){
+    .home-cover{
+        height: 43vh;
+    }
+}
+
+@media(min-width: 1400px){
+    .home-cover .mekkah-img{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media(min-width: 1200px){
+    .home-cover .mekkah-img{
+        width: 65% !important;
+        height: 65% !important;
+    }
+    .home-cover .masjid-img{
+        width: 100% !important;
+        height: 100% !important;
+        margin-bottom: -110px;
+    }
+    .home-cover .madinah-img{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 992px){
+    .home-cover .mekkah-img{
+        width: 100% !important;
+        height: 65% !important;
+    }
+    .home-cover .masjid-img{
+        width: 100% !important;
+        height: 100% !important;
+        margin-bottom: -110px;
+    }
+    .home-cover .madinah-img{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+@media(max-width: 767px){
+    .home-cover .mekkah-img{
+        width: 100% !important;
+        height: 80% !important;
+    }
+
+    .home-cover .title{
+        width: 90% !important;
+        top: 18% !important;
+        font-size: calc(1.3rem + 4vw) !important;
+    }
+
+    .home-cover .btn-lihat-jadwal-umroh{
+        font-size: 1.1rem;
+        padding-inline: 2rem !important;
+    }
+
+    .home-cover .masjid-img{
+        width: 100% !important;
+        height: 100% !important;
+        margin-bottom: -90px;
+    }
+    .home-cover .madinah-img{
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
+.carousel-image {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+    position: absolute;
+    object-fit: cover;
+    bottom: 0;
+    z-index: 2;
+    filter: drop-shadow(5px 0px 15px rgba(0,0,0,0.5))
+}
+
+.carousel-image.activeImg {
+    opacity: 1;
+    transform: translateY(0);
+}
+  
+.home-cover .title{
+    font-size: calc(1.3rem + 3vw);
+    width: 80%;
+    color: white;
+    z-index: 1;
+    font-weight: 700;
+    position: absolute;
+    top: 14%;
+    text-align: center;
+}
+
+.home-cover .tagline{
+    font-size: calc(1.5rem + 1vw);
+    color: white;
+    background-color: #09643b;
+    z-index: 3;
+    font-weight: 500;
+    position: absolute;
+    top: 44%;
+    padding-inline: 15px;
+    border-radius: 15px;
+}
+
+.airlines-logo{
+    overflow: hidden;
+    padding-block: 30px;
+    white-space: nowrap;
+}
+
+.airlines-slide{
+    animation: slide 25s infinite linear;
+    display: inline-block;
+
+}
+
+.airlines-slide img{
+    height: 125px;
+    margin: 0 30px;
+}
+
+@keyframes slide{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.kelebihan .title{
+    font-size: calc(1.3rem + 3vw);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    color: #09643b;
+}
+
+.kelebihan .title-desc{
+    text-align: center;
+    width: 70%;
+    font-size: calc(1rem + 0.2vw);
+}
+
+@media(max-width: 768px){
+    .kelebihan .title-desc{
+        text-align: center;
+        width: 90%;
+        font-size: calc(1rem + 0.2vw);
+    }
+}
+
+.benefit-card{
+    background-color: white;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.benefit-card .benefit-title{
+    color: #09643b;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.benefit-card::before{
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    background-color: #09643b;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    content: "";
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.benefit-img{
+    width: 125px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 15px;
+}
+
+.benefit-nav-btn{
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.benefit-custom-btn{
+    font-size: 2rem;
+    color:#09643b;
+}
+
+
+.ijin .title{
+    font-size: calc(1.3rem + 3vw);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    color: #09643b;
+}
+
+.ijin .title-desc{
+    text-align: center;
+    width: 70%;
+    font-size: calc(1rem + 0.2vw);
+}
+
+.ijin-divider{
+    width: calc(200px + 20vw);
+    position: absolute;
+    top: 0;
+    margin-top: 70px;
+}
+
+@media(max-width: 768px){
+    .ijin .title-desc{
+        text-align: center;
+        width: 90%;
+        font-size: calc(1rem + 0.2vw);
+    }
+    .ijin-divider{
+        width: calc(200px + 20vw);
+        position: absolute;
+        top: 0;
+        margin-top: 110px;
+    }
+}
+
+.accordion-ijin-button{
+    background-color: #fff2d7;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color:  #09643b;
+}
+
+.accordion-ijin-button::after {
+    content: '+'; 
+    font-size: 1.5rem;
+    font-weight: 600;
+    transform: none !important;
+    background-image: none !important;
+  }
+
+.accordion-ijin-button:not(.collapsed)::after {
+    content: '-'; 
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.accordion-ijin-button:focus {
+    box-shadow: none;
+    outline: none;
+    background-color: #fff2d7;
+    color:#09643b;
+}
+  
+.bukti-perijinan{
+    text-decoration: none;
+    color: #09643b;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.accordion-item{
+    border-bottom: 1.5px solid #09643b;
+}
+
+.paket-umroh-home .title{
+    font-size: calc(1.3rem + 3vw);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    color: #09643b;
+}
+
+.paket-umroh-home .title-desc{
+    text-align: center;
+    width: 70%;
+    font-size: calc(1rem + 0.2vw);
+}
+
+@media(max-width: 768px){
+    .paket-umroh-home .title-desc{
+        text-align: center;
+        width: 90%;
+        font-size: calc(1rem + 0.2vw);
+    }
+}
+
+.umroh-card{
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.umroh-card-img{
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.umroh-card-title{
+    color: #09643b;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.umroh-card-price{
+    color: #09643b;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.umroh-card-logo{
+    color:#09643b;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.umroh-card .detail-paket-btn{
+    background-color: #09643b;
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+    padding-block: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.umroh-card .detail-paket-btn:hover{
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: #e2a816;
+}
+
+.umroh-card-decoration{
+    position: absolute;
+    bottom: 0;
+    width: 110%;
+    margin-bottom: -5px;
+    left: 0;
+    z-index: 1;
+}
+
+.paket-umroh-home .btn-lainnya{
+    background-color: #09643b;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    padding-inline: calc(2em + 4.5vw);
+    padding-block: 10px;
+    border-radius: 10px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.paket-umroh-home .btn-lainnya:hover{
+    background-color: #e2a816;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+}
+
+.sosial-media-home .title{
+    font-size: calc(1.3rem + 3vw);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    color: #09643b;
+}
+
+.sosial-media-home .title-desc{
+    text-align: center;
+    width: 70%;
+    font-size: calc(1rem + 0.2vw);
+}
+
+@media(max-width: 768px){
+    .sosial-media-home .title-desc{
+        text-align: center;
+        width: 90%;
+        font-size: calc(1rem + 0.2vw);
+    }
+}
+
+.social-media-card-icon a{
+    position: absolute;
+    background-color: #09643b;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-block: 15px;
+    padding-inline: 20px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-media-card-icon a:hover{
+    background-color: #e2a816;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+}
+
+.social-media-card{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16; 
+    overflow: hidden;
+    background-color: red; 
+    border-radius: 10px;
+}
+
+.video-player {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.btn-cta-social-media{
+    color: white;
+    text-decoration: none;
+    background-color: #09643b;
+    padding-block: 5px;
+    padding-inline: 25px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+}
+
+.btn-cta-social-media:hover{
+    background-color: #e2a816;
+}
+
+.cta-home{
+    background-color:#09643b;
+    margin-top: -10px;
+    margin-bottom: 0;
+    padding-block: 30px;
+    height: auto;
+}
+
+.cta-home .title{
+    font-size: calc(1.3rem + 3vw);
+    color: white;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+}
+
+@media(max-width: 768px){
+    .cta-home .title-desc{
+        text-align: center;
+        font-size: calc(1rem + 0.2vw);
+    }
+}
+
+.cta-btn-home{
+    background-color: white;
+    padding-inline: calc(5em + 5vw);
+    padding-block: 10px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 2;
+    width: 40%;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cta-btn-home a{
+    z-index: 2;
+    color:#09643b;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cta-btn-home::before{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color:#e2a816;
+    transform-origin: center;
+    content: "";
+    z-index: 0;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: all 0.3s ease;
+
+}
+
+.cta-btn-home:hover::before{
+    transform: scale(1);
+}
+
+.cta-btn-home:hover a{
+    color: white;
+}
