@@ -6,13 +6,15 @@ import Benefit from '@/Components/user/Benefit';
 import IjinAccordion from '@/Components/user/IjinAccordion';
 import UmrohCard from '@/Components/user/UmrohCard';
 import SocialMediaVideo from '@/Components/user/SocialMediaVideo';
+import Footer from '@/Components/user/UserFooter';
+import FloatWhatsappButton from '@/Components/user/FloatWhatsappButton';
 
 export default function Home(){
     return(
         <>
             <Head title="Home"/>
-
             <UserNavbar/>
+            <FloatWhatsappButton/>
 
             {/* HERO */}
             <div className="home-cover">
@@ -20,6 +22,13 @@ export default function Home(){
                 <h1 className='title'>Sahabat Terbaik dan Terpercaya Menuju Baitullah Bersama <br /><span style={{ color: "#09643b" }}>An Namiroh Travelindo</span></h1>
                 <Link className="btn-lihat-jadwal-umroh" href="">Lihat Jadwal Umroh</Link>
                 {/* <h2 className='tagline'>Mudah | Murah | Amanah</h2> */}
+                <div className="hero-social-media-group">
+                    <a href=""><i className='bi bi-whatsapp hero-social-media-icon'></i></a>
+                    <a href=""><i className='bi bi-instagram hero-social-media-icon'></i></a>
+                    <a href=""><i className='bi bi-tiktok hero-social-media-icon'></i></a>
+                    <a href=""><i className='bi bi-youtube hero-social-media-icon'></i></a>
+                    <a href=""><i className='bi bi-facebook hero-social-media-icon'></i></a>
+                </div>
             </div>
 
             {/* AIRLINE */}
@@ -29,7 +38,7 @@ export default function Home(){
             <div className="kelebihan mx-1 mx-lg-5">
                 <div className="d-flex flex-column align-items-center w-100 justify-content-center">
                     <h1 className='title'>Mengapa Memilih An Namiroh?</h1>
-                    <p className='text-center title-desc'>Annamiroh Travelindo adalah biro perjalanan umroh dan haji yang legal, 
+                    <p className='text-center title-desc'>An Namiroh Travelindo adalah biro perjalanan umroh dan haji yang legal, 
                                             terpercaya, dan sangat berpengalaman, menghadirkan layanan 
                                             ibadah yang nyaman, amanah, dan sesuai tuntunan syariah</p>
                 </div>
@@ -39,7 +48,7 @@ export default function Home(){
             {/* IJIN */}
             <div className="ijin mx-1 mx-lg-5">
                 <div className="d-flex flex-column align-items-center w-100 justify-content-center position-relative ">
-                    <h1 className='title'>Resmi & Terpecaya</h1>
+                    <h1 className='title'>Resmi & Terpercaya</h1>
                     <p className='text-center title-desc'>
                         An Namiroh Travelindo memiliki izin resmi dari Kementrian Agama RI untuk menyelenggarakan perjalanan Umroh dan Haji, memastikan keamanan dan keabsahan ibadah Anda
                     </p>
@@ -106,7 +115,7 @@ export default function Home(){
             {/* SOSIAL MEDIA VIDEO */} 
             <div className="sosial-media-home mx-3 mx-lg-5 mb-5" style={{ marginTop: "5em" }}>
                 <div className="d-flex flex-column align-items-center w-100 justify-content-center position-relative ">
-                    <h1 className='title'>Lihat Sosial Media Kami</h1>
+                    <h1 className='title'>Ikuti Sosial Media Kami</h1>
                     <p className='text-center title-desc'>
                         Selalu terhubung dengan kami melalui sosial media dan jadi yang pertama tahu info dan promo terbaru
                     </p>
@@ -119,8 +128,16 @@ export default function Home(){
             <div className="cta-home px-3 mb-0 px-lg-5">
                 <h1 className='title mb-3 p-0'>Mulai Perjalanan Ibadahmu <br />Hari Ini!</h1>
                 <div className='cta-btn-home'>
-                    <a href=""><i class="bi bi-whatsapp me-2"></i>Hubungi Kami</a>
+                    <a  target="_blank" href="https://wa.me/6285649594417"><i class="bi bi-whatsapp me-2"></i>Hubungi Kami</a>
                 </div>
+            </div>
+
+            {/* FOOTER */}
+            <Footer/>
+
+            {/* COPYRIGHT */}
+            <div className="copyright d-flex justify-content-center bg-white align-items-center p-3">
+                <p className='p-0 m-0 fw-bold' style={{ color: "#09643b" }}>Copyright &copy; 2025 PT. Annamiroh Travelindo</p>
             </div>
         </>
     )

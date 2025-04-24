@@ -2,8 +2,8 @@ export default function SocialMediaVideo(){
     return(
         <>
         <div className="container-fluid">
-            <div className="row social-media-group">
-                <div className="col-12 pe-0 pe-lg-3 pe-xl-3 p-0 col-md-6 col-xl-4">
+            <div className="row justify-content-between social-media-group">
+                <div className="col-12  col-md-6 col-xl-4">
                     <div className="social-media-card position-relative">
                         <div className="social-media-card-icon">
                             <a href="" style={{ textDecoration: "none" }}><i className="bi bi-tiktok"></i></a>
@@ -21,7 +21,7 @@ export default function SocialMediaVideo(){
                         </div>
                     </div>
                 </div>
-                <div className="col-12 px-0 px-lg-3 px-xl-3 col-md-6 col-xl-4">
+                <div className="col-12  col-md-6 col-xl-4">
                     <div className="social-media-card position-relative">
                     <div className="social-media-card-icon">
                             <a href="" style={{ textDecoration: "none" }}><i className="bi bi-instagram"></i></a>
@@ -39,7 +39,7 @@ export default function SocialMediaVideo(){
                         </div>
                     </div>
                 </div>
-                <div className="col-12 ps-0 pe-lg-3 ps-xl-3 pe-0 col-md-6 col-xl-4">
+                <div className="col-12  col-md-6 col-xl-4">
                     <div className="social-media-card position-relative">
                     <div className="social-media-card-icon">
                             <a href="" style={{ textDecoration: "none" }}><i className="bi bi-youtube"></i></a>

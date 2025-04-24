@@ -9,6 +9,11 @@
 body{
     background-color: #fff2d7;
 }
+
+.user-navbar{
+    transition: all 0.3s ease;
+}
+
 .user-navbar .nav-link{
     text-transform: uppercase;
 }
@@ -22,8 +27,31 @@ body{
     transition: all 0.3s ease;
 }
 
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu{
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    padding-block: 0;
+    overflow: hidden;
+}
+
+.dropdown-item{
+    color: black !important;
+    padding-block: 10px;
+    padding-inline: 15px;
+}
+
+.dropdown-item:hover{
+    color:white !important; 
+    background-color: #09643b !important;
+}
+    
 .nav-link:hover{
-    color: #09643b;
+    color: #09643b !important;
     transform: translateY(-3px);
 }
 
@@ -92,6 +120,29 @@ body{
     box-shadow: 0px 0px 10px 1px rgba(255, 255, 255, 0.3);
     text-align: center;
     transition: all 0.3s ease;
+}
+
+.hero-social-media-group{
+    z-index: 2;
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    bottom: 70px;
+}
+
+.hero-social-media-icon{
+    padding-block: 15px;
+    padding-inline: 20px;
+    background-color: #09643b;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.hero-social-media-icon:hover{
+    background-color: #e2a816;
 }
 
 
@@ -313,6 +364,12 @@ body{
 .benefit-custom-btn{
     font-size: 2rem;
     color:#09643b;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.benefit-custom-btn:hover{
+    color: #e2a816;
 }
 
 
@@ -384,6 +441,11 @@ body{
     color: #09643b;
     font-weight: 600;
     font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.bukti-perijinan:hover{
+    color:#e2a816;
 }
 
 .accordion-item{
@@ -647,3 +709,208 @@ body{
 .cta-btn-home:hover a{
     color: white;
 }
+
+.user-footer{
+    background-color: #09643b;
+    margin-top: -5px;
+}
+
+.user-footer img{
+    filter: brightness(0) invert(1);
+    width: 180px;
+}
+
+.user-footer .footer-desc{
+    color: white;
+    margin-top: 7px;
+    text-align: justify;
+}
+
+.user-footer-logo{
+    color: white;
+    font-weight: bold;
+}
+
+.user-footer-contact{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.user-footer-contact:hover{
+    color:#e2a816;
+}
+
+.user-footer-nav a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.user-footer-nav a:hover{
+    color: #e2a816;
+}
+
+.user-footer-dec-1,
+.user-footer-dec-2{
+    position: absolute;
+    filter: brightness(1) invert(0) !important;
+    opacity: 0.5;
+    width: 250px !important;
+}
+
+.user-footer-dec-1{
+    bottom: 0;
+    left: 0;
+}
+
+.user-footer-dec-2{
+    right: 0;
+    bottom: 0;
+    transform: rotate(270deg);
+}
+
+.float-wa-btn{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    padding-inline: 15px;
+    padding-block: 10px;
+    margin: 15px;
+    background-color: #09643b;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.float-wa-btn:hover{
+    background-color: #e2a816;
+}
+
+
+.user-umroh .title{
+    color: #09643b;
+    font-weight: bold;
+}
+
+.filter-bulan-umroh{
+    outline:none;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    margin-left: 5px;
+    position: relative;
+}
+
+.filter-bulan-umroh option {
+    background-color:#fff2d7;
+    color: #000;
+    border-radius: 15px;
+    border: 2px solid red;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 1);
+}
+
+.dropdown-bulan-umroh{
+    padding-block: 6px;
+    padding-inline: 10px;
+}
+
+.umroh-not-found{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.umroh-detail-img{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.umroh-detail-page .title{
+    color: #09643b;
+    font-size: calc(1.5rem + 0.5vw);
+    font-weight: 600;
+    margin: 0;
+}
+
+.umroh-detail-page .price{
+    color: #09643b;
+    font-size: calc(1.5rem + 2vw);
+    font-weight: 600;
+    margin: 0;
+}
+
+.user-umroh-detail-tab{
+    width: 100%;
+    border-top: 1.5px solid #09643b;
+    flex-grow: 1;
+    margin-top: 15px;
+}
+
+.btn-umroh-detail-tab {
+    flex-grow: 1;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding-block: 10px;
+}
+
+.btn-umroh-detail-tab.active{
+    border-bottom: 4px solid #09643b;
+    color:#09643b;
+    font-weight: bold;
+}
+
+.btn-umroh-detail-tab.not-active{
+    border-bottom: 0.5px solid lightgray;
+}
+
+.form-pendaftaran-umroh h1{
+    margin-top: 1em;
+    color: #09643b;
+    font-weight: 600;
+}
+
+.form-pendaftaran-umroh p{
+    font-size: 1.2rem;
+}
+
+.form-pendaftaran-umroh .form-label{
+    color:#09643b !important;
+    font-weight: bold;
+}
+
+.form-pendaftaran-umroh input, .form-pendaftaran-umroh textarea{
+    background-color: transparent;
+    border: none;
+    /* border-bottom: 1px solid #09643b; */
+    border-radius: 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.form-pendaftaran-umroh input::before, .form-pendaftaran-umroh textarea::before{
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    content: "";
+    background-color: red;
+}
+
+.form-pendaftaran-umroh input:focus, .form-pendaftaran-umroh textarea:focus{
+    background-color: transparent;
+    outline: none !important;
+    border: none;
+    box-shadow: none !important;
+    border-bottom: 3px solid #09643b;
+}   
