@@ -41,7 +41,7 @@ export default function UserNavbar({isForceBlack = false}) {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav gap-2 ms-auto mb-2 mb-lg-0">
                         <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
-                            <Link className={`nav-link ${textColor}`} aria-current="page" href="/">Home</Link>
+                            <Link className={`nav-link ${textColor}`} aria-current="page" href="/">beranda</Link>
                         </li>
                         <li className={`nav-item dropdown ${isScrolled ? "py-2" : "py-3"}`}>
                             <Link className={`nav-link dropdown-toggle  ${textColor}`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,7 +73,10 @@ export default function UserNavbar({isForceBlack = false}) {
                             <Link className={`nav-link  ${textColor}`} aria-current="page" href="#">FAQ</Link>
                         </li>
                         <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
-                            <Link className={`nav-link  ${textColor}`} aria-current="page" href="#">TENTANG KAMI</Link>
+                            <Link className={`nav-link  ${textColor}`} aria-current="page" href="/blog">BLOG</Link>
+                        </li>
+                        <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
+                            <Link className={`nav-link  ${textColor}`} aria-current="page" href="/tentang-kami">TENTANG KAMI</Link>
                         </li>
                         <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
                             <a className="nav-link nav-btn-whatsapp" aria-current="page" target="_blank" href="https://wa.me/6285649594417">Whatsapp</a>

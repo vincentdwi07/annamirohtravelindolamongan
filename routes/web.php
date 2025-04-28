@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
 use App\Http\Controllers\UmrohController;
+use App\Http\Controllers\UmrohDetailController;
 
 Route::get('/', function () {
     return Inertia::render('Home', [
@@ -27,10 +28,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/umroh', [UmrohController::class, 'index'])->name('user.umroh');
-Route::get('/umroh-detail', function () {
-    return Inertia::render('UserUmrohDetail');
-})->name('user.umroh.detail');
 
+Route::get('/umroh-detail', [UmrohDetailController::class, 'show']);
 
+Route::get('/tentang-kami', function(){
+    return Inertia::render('TentangKami');
+})->name('tentangKami');
+
+// Route::get('/blog', function(){
+//     return Inertia::render('Blog');
+// })->name('blog');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('user.blog');
 
 require __DIR__.'/auth.php';

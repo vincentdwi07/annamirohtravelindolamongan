@@ -8,6 +8,7 @@ import UmrohCard from '@/Components/user/UmrohCard';
 import SocialMediaVideo from '@/Components/user/SocialMediaVideo';
 import Footer from '@/Components/user/UserFooter';
 import FloatWhatsappButton from '@/Components/user/FloatWhatsappButton';
+import Flipbook from '@/Components/user/Flipbook';
 
 export default function Home(){
     return(
@@ -67,7 +68,7 @@ export default function Home(){
                 </div>
                 <div className="container">
 
-                <div className="row mt-0">
+                <div className="row justify-content-between mt-0">
                     <div className="col-12 p-0 col-md-6 col-xl-4">
                         <UmrohCard
                             img="./user/umroh-card-img/PAKET UMROH PROMO KELUARGA.jpeg"
@@ -112,6 +113,12 @@ export default function Home(){
                 </div>
             </div>
 
+            {/* DESTINASI UMROH - FLIPBOOK*/}
+            <div className="flipbook-home mx-3 mx-lg-5 px-0 px-lg-2" style={{ marginTop: "6em" }}>
+                <h1 className="title text-center">Destinasi Umroh 2025</h1>
+                <Flipbook/>
+            </div>
+
             {/* SOSIAL MEDIA VIDEO */} 
             <div className="sosial-media-home mx-3 mx-lg-5 mb-5" style={{ marginTop: "5em" }}>
                 <div className="d-flex flex-column align-items-center w-100 justify-content-center position-relative ">
@@ -124,13 +131,14 @@ export default function Home(){
             </div>
 
             {/* CTA */}
-            <svg className='cta-wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path fill="#09643b" fill-opacity="1" d="M0,32L48,48C96,64,192,96,288,112C384,128,480,128,576,117.3C672,107,768,85,864,90.7C960,96,1056,128,1152,128C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+            <svg className='cta-wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path fill="#09643b" fillOpacity="1" d="M0,32L48,48C96,64,192,96,288,112C384,128,480,128,576,117.3C672,107,768,85,864,90.7C960,96,1056,128,1152,128C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
             <div className="cta-home px-3 mb-0 px-lg-5">
                 <h1 className='title mb-3 p-0'>Mulai Perjalanan Ibadahmu <br />Hari Ini!</h1>
                 <div className='cta-btn-home'>
-                    <a  target="_blank" href="https://wa.me/6285649594417"><i class="bi bi-whatsapp me-2"></i>Hubungi Kami</a>
+                    <a  target="_blank" href="https://wa.me/6285649594417"><i className="bi bi-whatsapp me-2"></i>Hubungi Kami</a>
                 </div>
             </div>
+
 
             {/* FOOTER */}
             <Footer/>

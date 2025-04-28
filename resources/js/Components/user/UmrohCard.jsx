@@ -1,4 +1,4 @@
-export default function UmrohCard({img, title, price, periode, hotelMekkah, hotelMadinah, maskapai, seat}){
+export default function UmrohCard({img, title, price, periode, hotelMekkah, hotelMadinah, maskapai, seat, btn_detail}){
     return(
         <>
             <div className="mx-4 mx-lg-3 umroh-card position-relative mb-5 mt-3">
@@ -51,7 +51,7 @@ export default function UmrohCard({img, title, price, periode, hotelMekkah, hote
                         </div>
                     </div>
                     <div className="d-flex w-100 justify-content-center">
-                        <a className="detail-paket-btn" href="">Detail Paket</a>
+                        <a className="detail-paket-btn" href={`/umroh-detail?id=${btn_detail}`}>Detail Paket</a>
                     </div>
             </div>
         </>

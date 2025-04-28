@@ -64,12 +64,13 @@ export default function UserUmroh() {
                                             hotelMadinah={item.hotel_madinah}
                                             maskapai={item.maskapai}
                                             seat={item.seat}
+                                            btn_detail={item.id}
                                         />
                                     </div>
                                 ))
                             ) : (
-                                <div className="col-12">
-                                    <p className="text-center">Paket Umroh Tidak Ada untuk Bulan {bulanDipilih}</p>
+                                <div className="text-center umroh-not-found">
+                                    <h3 className="text-center">Paket Umroh Tidak Ada untuk Bulan {bulanDipilih}</h3>
                                 </div>
                             )
                         ) : 
