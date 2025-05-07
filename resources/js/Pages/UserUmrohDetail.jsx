@@ -2,6 +2,7 @@ import UserNavbar from "@/Components/user/UserNavbar"
 import Footer from "@/Components/user/UserFooter"
 import { Head, usePage } from "@inertiajs/react"
 import { useState } from "react";
+import { useForm } from "@inertiajs/react";
 
 export default function UserUmrohDetail(){
     const {umroh} = usePage().props;
@@ -23,6 +24,28 @@ export default function UserUmrohDetail(){
 
     const handleBlur = (field) => {
         setActive(prev => ({ ...prev, [field]: false }));
+    };
+
+    const { data, setData, post, processing, errors } = useForm({
+        nama_lengkap: '',
+        no_wa: '',
+        email: '',
+        alamat: '',
+        nama_paket: umroh.title,
+        jenis_pesanan: 'Umroh',
+        status: false,
+        is_open: false
+    });
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Mencegah reload halaman
+        
+        // Use the useForm hook's post method
+        post('/submit-pesanan', {
+            onSuccess: () => {
+                alert('Pendaftaran berhasil!');
+            }
+        });
     };
 
     return (
@@ -98,12 +121,12 @@ export default function UserUmrohDetail(){
                                 )}
                                 {activeTab === "tab2" && (
                                     <div>
-                                        <p>{umroh.itenerary}</p>
+                                        <div dangerouslySetInnerHTML={{ __html: umroh.itenerary }} />
                                     </div>
                                 )}
                                 {activeTab === "tab3" && (
                                     <div>
-                                        <p>{umroh.catatan}</p>
+                                        <div dangerouslySetInnerHTML={{ __html: umroh.catatan }} />
                                     </div>
                                 )}
                             </div>
@@ -118,35 +141,41 @@ export default function UserUmrohDetail(){
                         <h1 className="mt-0">{`Formulir Pendaftaran | ${umroh.title}`}</h1>
                         <p>Silakan isi form di bawah ini untuk melakukan pendaftaran. Setelah itu, tim kami akan menghubungi Anda melalui WhatsApp secepatnya untuk informasi selanjutnya.</p>
                     
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             {/* Nama Lengkap */}
                             <div className={`mb-3 input-area ${active.nama ? "active" : ""}`}>
-                                <label htmlFor="nama" className="form-label">Nama Lengkap</label>
+                                <label htmlFor="nama_lengkap" className="form-label">Nama Lengkap</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="nama"
-                                    name="nama"
+                                    id="nama_lengkap"
+                                    name="nama_lengkap"
                                     placeholder="Masukkan nama lengkap Anda"
+                                    value={data.nama_lengkap}
+                                    onChange={e => setData('nama_lengkap', e.target.value)}
                                     onFocus={() => handleFocus("nama")}
                                     onBlur={() => handleBlur("nama")}
                                     required
                                 />
+                                {errors.nama_lengkap && <div className="text-danger mt-1">{errors.nama_lengkap}</div>}
                             </div>
 
                             {/* Nomor WhatsApp */}
                             <div className={`mb-3 input-area ${active.whatsapp ? "active" : ""}`}>
-                                <label htmlFor="whatsapp" className="form-label">Nomor WhatsApp</label>
+                                <label htmlFor="no_wa" className="form-label">Nomor WhatsApp</label>
                                 <input
                                     type="tel"
                                     className="form-control"
-                                    id="whatsapp"
-                                    name="whatsapp"
+                                    id="no_wa"
+                                    name="no_wa"
                                     placeholder="Masukkan nomor WhatsApp Anda"
+                                    value={data.no_wa}
+                                    onChange={e => setData('no_wa', e.target.value)}
                                     onFocus={() => handleFocus("whatsapp")}
                                     onBlur={() => handleBlur("whatsapp")}
                                     required
                                 />
+                                {errors.no_wa && <div className="text-danger mt-1">{errors.no_wa}</div>}
                             </div>
 
                             {/* Email */}
@@ -158,27 +187,40 @@ export default function UserUmrohDetail(){
                                     id="email"
                                     name="email"
                                     placeholder="Masukkan email Anda"
+                                    value={data.email}
+                                    onChange={e => setData('email', e.target.value)}
                                     onFocus={() => handleFocus("email")}
                                     onBlur={() => handleBlur("email")}
                                 />
+                                {errors.email && <div className="text-danger mt-1">{errors.email}</div>}
                             </div>
 
-                            {/* Catatan Tambahan */}
+                            {/* Alamat */}
                             <div className={`mb-3 input-area ${active.catatan ? "active" : ""}`}>
-                                <label htmlFor="catatan" className="form-label">Alamat</label>
+                                <label htmlFor="alamat" className="form-label">Alamat</label>
                                 <textarea
                                     className="form-control"
-                                    id="catatan"
-                                    name="catatan"
+                                    id="alamat"
+                                    name="alamat"
                                     rows="3"
                                     placeholder="Masukkan alamat anda"
+                                    value={data.alamat}
+                                    onChange={e => setData('alamat', e.target.value)}
                                     onFocus={() => handleFocus("catatan")}
                                     onBlur={() => handleBlur("catatan")}
                                 ></textarea>
+                                {errors.alamat && <div className="text-danger mt-1">{errors.alamat}</div>}
                             </div>
 
-                            <button type="submit" className="btn-daftar-umroh-detail">Daftar Sekarang</button>
+                            <button 
+                                type="submit" 
+                                className="btn-daftar-umroh-detail" 
+                                disabled={processing}
+                            >
+                                {processing ? 'Mengirim...' : 'Daftar Sekarang'}
+                            </button>
                         </form>
+
                     </div>
 
                     {/* PAKET PUSAT */}

@@ -2,20 +2,39 @@ import UserNavbar from "@/Components/user/UserNavbar"
 import { Head } from "@inertiajs/react"
 import FloatWhatsappButton from "@/Components/user/FloatWhatsappButton"
 import Footer from "@/Components/user/UserFooter"
+import { useEffect } from "react"
 
 export default function TentangKami(){
+
+    useEffect(() => {
+        const modal = document.getElementById("exampleModal");
+        const video = document.getElementById("sambutanVideo");
+
+        const handleModalHidden = () => {
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+        };
+
+        modal?.addEventListener("hidden.bs.modal", handleModalHidden);
+
+        return () => {
+            modal?.removeEventListener("hidden.bs.modal", handleModalHidden);
+        };
+    }, []);
     return(
         <>
-            <UserNavbar/>
+            <UserNavbar isForceBlack={true}/>
             <FloatWhatsappButton/>
             <Head title="Tentang Kami"/>
             <div className="tentang-kami">
-                <div className="hero-tentang-kami px-5 px-lg-5">
+                {/* <div className="hero-tentang-kami px-5 px-lg-5">
                     <div className="overlay"></div>
                     <h1 className="title text-center">TENTANG KAMI</h1>
-                </div>
+                </div> */}
 
-                <div className="tentang-kami-content pt-5 px-3 px-lg-5 pb-5">
+                <div className="tentang-kami-content px-3 px-lg-5 pb-5" style={{ marginTop: "6em" }}>
                     <h1 className="title m-0 p-0">An Namiroh Travelindo Lamongan</h1>
                     <p>Berawal dari keinginan tulus untuk memudahkan umat Islam menunaikan Ibadah Umroh, Annamiroh Travelindo Lamongan dibentuk oleh tim profesional yang berpengalaman dan terbukti mampu memfasilitasi perjalanan umroh dari proses persiapan dan pelaksanaan ibadah secara optimal.
                         Kami melihat betapa banyak orang mempunyai niat, namun merasa terhalang oleh berbagai alasan: ekonomi, ketidaktahuan, atau kekhawatiran. Di sinilah kami hadir membantu para calon tamu Allah.
@@ -96,7 +115,52 @@ export default function TentangKami(){
                                     </div>
                                 </div>
                             </div>
-                            
+                        </div>
+
+                        <div className="owner-profile mt-5" style={{ marginBottom: "6em" }}>
+                            <div className="container-fluid p-0 pt-5 m-0">
+                            <h1 className="title text-start mb-3">Mengenal Pimpinan Kami</h1>
+                                <div className="row p-0 flex-wrap flex-lg-nowrap">
+                                    <div className="col-12 d-flex  justify-content-start col-lg-4 col-md-6">
+                                        <div className="owner-photo-container d-flex flex-column">
+                                            <div className="owner-photo-background"></div>
+                                            <img src="./user/owner-photo.png" alt="" />
+                                            <div className="owner-photo-desc">
+                                                <h3 className="name">Abi Sudiono</h3>
+                                                <p className="jabatan p-0 m-0">Pimpinan PT Annamiroh Travelindo Cabang Lamongan</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-12 d-flex flex-column align-items-center justify-content-center owner-profile-words col-lg-8 col-md-6">
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis inventore aspernatur, non perferendis dolores nulla laudantium vero voluptas voluptate voluptatem dolorem tempora suscipit quas sint magnam recusandae praesentium pariatur in.
+                                        </p>
+                                        <button type="button" className="btn-play-video d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <div className="p-0 m-0 d-flex align-items-center">
+                                                <span className="me-1">Video Sambutan</span>
+                                                <span><i className="bi bi-play-fill"></i></span>
+                                            </div>
+                                        </button>
+
+
+                                        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div className="modal-dialog modal-dialog-centered">
+                                                <div className="modal-content">
+                                                    <div className="modal-header">
+                                                        <h6 className="title fs-6 m-0 p-0">Video Sambutan Pimpinan Annamiroh Travelindo Lamongan</h6>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    
+                                                    <div className="modal-body">
+                                                        <video id="sambutanVideo" controls src="./user/video-sambutan.mp4"></video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

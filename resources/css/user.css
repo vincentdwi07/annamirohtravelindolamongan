@@ -72,8 +72,8 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scaleX(0);
-    width: 150%;
-    height: 150%;
+    width: 200%;
+    height: 200%;
     background-color: #09643b;
     content: '';
     transform-origin: center;
@@ -421,7 +421,21 @@ body{
     font-weight: 600;
     transform: none !important;
     background-image: none !important;
-  }
+}
+
+@media(max-width: 768px){
+    .accordion-ijin-button::after {
+        content: '+'; 
+        font-size: 1rem !important;
+    }
+
+    .accordion-ijin-button{
+        background-color: #fff2d7;
+        font-size: 1rem;
+        font-weight: 600;
+        color:  #09643b;
+    }
+}
 
 .accordion-ijin-button:not(.collapsed)::after {
     content: '-'; 
@@ -835,6 +849,12 @@ body{
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 768px) {
+    .umroh-detail-page{
+        margin-top: 4em !important;
+    }
+}
+
 .umroh-detail-page .title{
     color: #09643b;
     font-size: calc(1.5rem + 0.5vw);
@@ -953,7 +973,7 @@ body{
     width: calc(15em + 20%);
 }
 
-.hero-tentang-kami{
+/* .hero-tentang-kami{
     background-image: url('./user/tentang-kami-page/kabah1.jpg');
     height: 100vh;
     background-repeat: no-repeat;
@@ -964,9 +984,9 @@ body{
     align-items: center;
     justify-content: center;
     background-attachment: fixed;
-}
+} */
 
-.hero-tentang-kami .overlay{
+/* .hero-tentang-kami .overlay{
     position:  absolute;
     top: 0;
     left: 0;
@@ -975,7 +995,7 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
     content: "";
     z-index: 1;
-}
+} */
 
 .hero-tentang-kami h1{
     color: white;
@@ -1082,7 +1102,7 @@ body{
     color: #09643b;
 }
 
-.kelebflipbook-homeihan .title-desc{
+.flipbook-home .title-desc{
     text-align: center;
     width: 70%;
     font-size: calc(1rem + 0.2vw);
@@ -1109,6 +1129,10 @@ body{
 .main-blog .blog-container{
     height: 100%;
     width: 100%;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }
 
 .main-blog .blog-container .btn-blog-container{
@@ -1146,12 +1170,17 @@ body{
     display: flex;
     gap: 10px;
     cursor: pointer;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }
 
 .side-blog-container p{
     margin: 0;
     padding: 0;
     font-size: 0.9rem;
+    
 }
 
 .side-blog-container h3{
@@ -1159,7 +1188,7 @@ body{
 }
 
 .side-blog-container img{
-    height: 150px;
+    height: 130px;
     border-radius: 10px;
     object-fit: cover;
 }
@@ -1173,6 +1202,10 @@ body{
 
 .other-blog-container{
     flex: 0 0 calc(33.3% - 15px);
+    padding: 15px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .other-blog-container h3{
@@ -1240,3 +1273,290 @@ body{
         margin-top: 30px;
     }
 }
+
+.blog-detail{
+    margin-top: 6em;
+}
+
+.blog-detail img{
+    width: 100%;
+    object-fit: cover;
+    height: 450px;
+    border-radius: 15px;
+}
+
+.blog-detail .title{
+    color: #09643b;
+    font-weight: bold;
+}
+
+.blog-detail .other-blog-card{
+    display: flex;
+    gap: 10px;
+    background-color: rgb(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.blog-detail .other-blog-img{
+    flex: 0 0 calc(40% - 10px);
+}
+.blog-detail .other-blog-card img{
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.blog-detail .other-blog-card .blog-content{
+    flex: 0 0 calc(60%);
+    width: 100%;
+}
+
+.faq{
+    margin-top: 6em;
+}
+
+.faq .title{
+    color:#09643b;
+    font-weight: bold;
+}
+
+.btn-download-flipbook{
+    background-color: #09643b;
+    padding-inline: 30px;
+    padding-block: 5px;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-download-flipbook:hover{
+    background-color: #e2a816;
+}
+
+.owner-photo-container{
+    /* background-color:red; */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.owner-photo-background{
+    position: absolute;
+    height: 85%;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #09643b;
+    z-index: 1;
+    bottom: 0;
+}
+
+.owner-photo-desc{
+    position: absolute;
+    bottom: -80px;
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.owner-photo-desc .name{
+    color:#09643b;
+    font-weight: bold; 
+}
+
+.owner-photo-desc .jabatan{
+    text-align: center;
+}
+
+.owner-photo-container img{
+    height: 350px;
+    object-fit: cover;
+    z-index: 2;
+}
+
+.owner-profile .btn-play-video{
+    background-color: #09643b;
+    border: none;
+    padding-block: 5px;
+    padding-inline: 15px;
+    border-radius: 10px;
+    color: white;
+    transition: all 0.3s ease ;
+}
+
+.owner-profile .btn-play-video:hover{
+    background-color: #e2a816;
+}
+
+.owner-profile .bi {
+    vertical-align: -.125em;
+    width: 1em;
+    height: 1em;
+}
+.owner-profile .modal-dialog {
+    max-width: 70%; /* Ukuran lebar modal, kamu bisa sesuaikan */
+    width: 90%; /* Menentukan lebar modal menjadi 90% dari ukuran layar */
+    height: 60%; /* Menentukan tinggi modal, misalnya 80% dari layar */
+}
+
+.owner-profile .modal-body{
+    position: relative;
+    padding: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.owner-profile .modal-body video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    border-radius: 5px;
+}
+
+
+@media (max-width: 992px) {
+    .owner-profile-words{
+        padding-top: 100px;
+    }
+
+    .owner-profile .modal-dialog {
+        max-width: 100%; /* Ukuran lebar modal, kamu bisa sesuaikan */
+        width: 95%; /* Menentukan lebar modal menjadi 90% dari ukuran layar */
+        height: 60%; /* Menentukan tinggi modal, misalnya 80% dari layar */
+    }
+    
+}
+
+
+.haji-page{
+    margin-top: 6em;
+}
+
+
+.haji-page .title{
+    color: #09643b;
+    font-size: calc(1.5rem + 0.5vw);
+    font-weight: 600;
+    margin: 0;
+}
+
+.haji-page .price{
+    color: #09643b;
+    font-size: calc(1.5rem + 2vw);
+    font-weight: 600;
+    margin: 0;
+}
+
+.haji-page .haji-img{
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.haji-page .gambar-kiri{
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.haji-page .konten-kanan{
+    overflow: auto;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+.hide-scrollbar {
+scrollbar-width: none; /* Firefox */
+-ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+@media (max-width: 768px) {
+    .haji-page .gambar-kiri{
+        position: relative;
+        margin-bottom: 1em;
+    }
+
+    .haji-page{
+        margin-top: 5em !important;
+    }
+    .haji-page .konten-kanan{
+        overflow: none;
+    }
+}
+
+.nav-link-admin{
+    border: none !important;
+    text-decoration: none;
+}
+
+.nav-link-admin:hover{
+    color: #09643b !important;
+}
+
+.text-hijau{
+    color:#09643b;
+}
+
+.background-kuning{
+    background-color: #fff2d7;
+}
+
+.accordion-button-pesanan:focus{
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: white;
+}
+
+.btn-pesanan-done{
+    background-color: #09643b;
+}
+.btn-pesanan-done:hover{
+    background-color: #e2a816;
+}
+
+.tanda-belum-diproses {
+    width: 0;
+    height: 0;
+    border-top: 15px solid red;     /* tinggi segitiga */
+    border-right: 15px solid transparent; /* lebar segitiga */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.tanda-sudah-diproses{
+    width: 0;
+    height: 0;
+    border-top: 15px solid green;     /* tinggi segitiga */
+    border-right: 15px solid transparent; /* lebar segitiga */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ql-size-large{
+    font-size: 1.5em;
+}
+
+/* .dropdown-admin:hover{
+    color: black !important;
+    transform: none !important;
+} */

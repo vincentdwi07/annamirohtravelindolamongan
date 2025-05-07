@@ -12,6 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4.1.0/turn.min.js"></script>
+        <link rel="icon" type="image/png" href="{{ asset('./user/document-logo.png') }}">
         <!-- Scripts -->
         @routes
         @viteReactRefresh

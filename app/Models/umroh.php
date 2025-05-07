@@ -18,7 +18,7 @@ class umroh extends Model
         'hotel_madinah',
         'maskapai',
         'seat',
-        'itinerary',
+        'itenerary',
         'catatan'
     ];
 }

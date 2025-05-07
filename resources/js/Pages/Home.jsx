@@ -24,11 +24,12 @@ export default function Home(){
                 <Link className="btn-lihat-jadwal-umroh" href="">Lihat Jadwal Umroh</Link>
                 {/* <h2 className='tagline'>Mudah | Murah | Amanah</h2> */}
                 <div className="hero-social-media-group">
-                    <a href=""><i className='bi bi-whatsapp hero-social-media-icon'></i></a>
-                    <a href=""><i className='bi bi-instagram hero-social-media-icon'></i></a>
-                    <a href=""><i className='bi bi-tiktok hero-social-media-icon'></i></a>
-                    <a href=""><i className='bi bi-youtube hero-social-media-icon'></i></a>
-                    <a href=""><i className='bi bi-facebook hero-social-media-icon'></i></a>
+                    <a href="https://wa.me/6285649594417" target='blank'><i className='bi bi-whatsapp hero-social-media-icon'></i></a>
+                    <a  target='blank' href="https://www.instagram.com/an_namiroh_lamongan?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==
+"><i className='bi bi-instagram hero-social-media-icon'></i></a>
+                    <a  target='blank' href="https://www.tiktok.com/@an_namiroh.travel?is_from_webapp=1&sender_device=pc"><i className='bi bi-tiktok hero-social-media-icon'></i></a>
+                    <a  target='blank' href="https://youtube.com/@pt.annamirohtravelindolamongan?si=CvwLGUJZ3WArWo-K"><i className='bi bi-youtube hero-social-media-icon'></i></a>
+                    <a  target='blank' href="https://www.facebook.com/people/Annamiroh-Lamongan/pfbid0DAWFTp8Fim6fy2JUCFkWJE6BKLMYYwV7rQfBDAXRhMccjyvHnCwuanWNcRu6RXzkl/#"><i className='bi bi-facebook hero-social-media-icon'></i></a>
                 </div>
             </div>
 
@@ -115,7 +116,12 @@ export default function Home(){
 
             {/* DESTINASI UMROH - FLIPBOOK*/}
             <div className="flipbook-home mx-3 mx-lg-5 px-0 px-lg-2" style={{ marginTop: "6em" }}>
-                <h1 className="title text-center">Destinasi Umroh 2025</h1>
+                <div className="d-flex flex-column justify-content-center align-items-center">              
+                    <h1 className="title text-center">Destinasi Umroh 2025</h1>
+                    <p className='text-center title-desc'>
+                    Kami sediakan buku yang menggambarkan pengalaman dan destinasi Umroh, sebagai bekal awal sebelum Anda menginjakkan kaki di Tanah Suci.
+                    </p>
+                </div>
                 <Flipbook/>
             </div>
 
@@ -131,22 +137,9 @@ export default function Home(){
             </div>
 
             {/* CTA */}
-            <svg className='cta-wave' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path fill="#09643b" fillOpacity="1" d="M0,32L48,48C96,64,192,96,288,112C384,128,480,128,576,117.3C672,107,768,85,864,90.7C960,96,1056,128,1152,128C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            <div className="cta-home px-3 mb-0 px-lg-5">
-                <h1 className='title mb-3 p-0'>Mulai Perjalanan Ibadahmu <br />Hari Ini!</h1>
-                <div className='cta-btn-home'>
-                    <a  target="_blank" href="https://wa.me/6285649594417"><i className="bi bi-whatsapp me-2"></i>Hubungi Kami</a>
-                </div>
-            </div>
-
 
             {/* FOOTER */}
             <Footer/>
-
-            {/* COPYRIGHT */}
-            <div className="copyright d-flex justify-content-center bg-white align-items-center p-3">
-                <p className='p-0 m-0 fw-bold' style={{ color: "#09643b" }}>Copyright &copy; 2025 PT. Annamiroh Travelindo</p>
-            </div>
         </>
     )
 }

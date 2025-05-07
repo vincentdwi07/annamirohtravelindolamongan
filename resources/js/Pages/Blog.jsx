@@ -4,20 +4,17 @@ import Footer from "@/Components/user/UserFooter";
 import { Head } from "@inertiajs/react";
 import FloatWhatsappButton from "@/Components/user/FloatWhatsappButton";
 
-// Fungsi untuk mengonversi tanggal
 const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
 };
 
 export default function Blog() {
-    // Mengambil data blog dari props yang dikirimkan oleh controller
     const { blog } = usePage().props;
 
-    // Memastikan ada data blog yang diterima
     if (blog.length === 0) {
         return (
             <>
@@ -35,10 +32,14 @@ export default function Blog() {
         );
     }
 
-    const mainBlog = blog[0]; // Ambil blog pertama untuk main blog
-    const sideBlogs = blog.slice(1, 4); // Ambil blog index 1-3 untuk side blog
-    const otherBlogs = blog.slice(4); // Ambil blog sisanya untuk other blog
+    const mainBlog = blog[0];
+    const sideBlogs = blog.slice(1, 4);
+    const otherBlogs = blog.slice(4);
 
+    function truncateText(text, maxLength) {
+        if (text.length <= maxLength) return text;
+        return text.slice(0, maxLength) + '...';
+    }
     return (
         <>
             <Head title="Blog" />
@@ -49,13 +50,17 @@ export default function Blog() {
                 <div className="row p-0 m-0 gap-3 flex-wrap flex-lg-nowrap">
                     {/* Main Blog */}
                     <div className="col-12 p-0 col-lg-6">
-                        <div className="main-blog">
+                        <div 
+                            className="main-blog"
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => window.location.href = `/blog-detail?id=${mainBlog.id}`}
+                        >
                             <div className="blog-container">
                                 <img src={mainBlog.img_url} alt={mainBlog.title} />
                                 <h3 className="title">{mainBlog.title}</h3>
                                 <p className="m-0 p-0 text-secondary">{formatDate(mainBlog.created_at)}</p>
-                                <p>{mainBlog.content}</p>
-                                <a className="btn-blog-container" href="#">Lihat Selengkapnya</a>
+                                <p>{truncateText(mainBlog.content, 200)}</p>
+                                <a className="btn-blog-container" href={`/blog-detail?id=${mainBlog.id}`}>Lihat Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -65,16 +70,23 @@ export default function Blog() {
                         <div className="side-blog">
                             <div className="d-flex flex-column gap-3">
                                 {sideBlogs.map(blog => (
-                                    <div key={blog.id} className="side-blog-container">
+                                    <div 
+                                        key={blog.id}
+                                        className="side-blog-container"
+                                        style={{ cursor: 'pointer' }}
+                                        onClick={() => window.location.href = `/blog-detail?id=${blog.id}`}
+                                    >
                                         <div className="side-blog-img">
                                             <img src={blog.img_url} alt={blog.title} />
                                         </div>
                                         <div>
                                             <h3 className="title">{blog.title}</h3>
                                             <p className="m-0 p-0 text-secondary">{formatDate(blog.created_at)}</p>
-                                            <p>{blog.content}</p>
+                                            <p>{truncateText(mainBlog.content, 150)}</p>
                                         </div>
-                                        <a className="d-inline-block d-lg-none btn-blog-container" href="#">Lihat Selengkapnya</a>
+                                        <a className="d-inline-block d-lg-none btn-blog-container" href={`/blog-detail?id=${blog.id}`}>
+                                            Lihat Selengkapnya
+                                        </a>
                                     </div>
                                 ))}
                             </div>
@@ -82,18 +94,22 @@ export default function Blog() {
                     </div>
                 </div>
 
-                <hr className="d-none mt-lg-5 mt-0 d-lg-block" style={{ color: "green", opacity: "1" }} />
 
                 {/* Other Blogs */}
                 <div className="mt-lg-5 mt-0 w-100">
                     <div className="p-0 w-100 other-blog">
                         {otherBlogs.map(blog => (
-                            <div key={blog.id} className="other-blog-container">
+                            <div 
+                                key={blog.id} 
+                                className="other-blog-container"
+                                style={{ cursor: 'pointer' }}
+                                onClick={() => window.location.href = `/blog-detail?id=${blog.id}`}
+                            >
                                 <img src={blog.img_url} alt={blog.title} />
                                 <h3 className="title">{blog.title}</h3>
                                 <p className="m-0 p-0 text-secondary">{formatDate(blog.created_at)}</p>
-                                <p>{blog.content}</p>
-                                <a className="btn-blog-container" href="#">Lihat Selengkapnya</a>
+                                <p>{truncateText(mainBlog.content, 200)}</p>
+                                <a className="btn-blog-container" href={`/blog-detail?id=${blog.id}`}>Lihat Selengkapnya</a>
                             </div>
                         ))}
                     </div>

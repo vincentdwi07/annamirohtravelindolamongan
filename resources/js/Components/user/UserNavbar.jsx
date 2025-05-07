@@ -44,7 +44,7 @@ export default function UserNavbar({isForceBlack = false}) {
                             <Link className={`nav-link ${textColor}`} aria-current="page" href="/">beranda</Link>
                         </li>
                         <li className={`nav-item dropdown ${isScrolled ? "py-2" : "py-3"}`}>
-                            <Link className={`nav-link dropdown-toggle  ${textColor}`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <Link className={`nav-link dropdown-toggle  ${textColor}`} role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Paket Umroh
                             </Link>
                             <ul className={`dropdown-menu ${isScrolled ? "mt-2" : "mt-3"}`}>
@@ -62,18 +62,25 @@ export default function UserNavbar({isForceBlack = false}) {
                                 Haji
                             </Link>
                             <ul className={`dropdown-menu ${isScrolled ? "mt-2" : "mt-3"}`}>
-                                <li><Link className="dropdown-item" href="#">Haji Plus</Link></li>
-                                <li><Link className="dropdown-item" href="#">Haji Furodha</Link></li>
+                                <li><Link className="dropdown-item" href={`/haji?kategori=Plus`}>Haji Plus</Link></li>
+                                <li><Link className="dropdown-item" href={`/haji?kategori=Furodha`}>Haji Furodha</Link></li>
+                                <li><Link className="dropdown-item" href={`/haji?kategori=Percepatan`}>Haji Percepatan</Link></li>
+                            </ul>
+                        </li>
+                        <li className={`nav-item dropdown ${isScrolled ? "py-2" : "py-3"}`}>
+                            <Link className={`nav-link dropdown-toggle  ${textColor}`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Badal
+                            </Link>
+                            <ul className={`dropdown-menu ${isScrolled ? "mt-2" : "mt-3"}`}>
+                                <li><Link className="dropdown-item" href={`/badal?kategori=Umroh`}>Badal Umroh</Link></li>
+                                <li><Link className="dropdown-item" href={`/badal?kategori=Haji`}>Badal Haji</Link></li>
                             </ul>
                         </li>
                         <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
-                            <Link className={`nav-link  ${textColor}`} aria-current="page" href="#">BADAL</Link>
-                        </li>
-                        <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
-                            <Link className={`nav-link  ${textColor}`} aria-current="page" href="#">FAQ</Link>
-                        </li>
-                        <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
                             <Link className={`nav-link  ${textColor}`} aria-current="page" href="/blog">BLOG</Link>
+                        </li>
+                        <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
+                            <Link className={`nav-link  ${textColor}`} aria-current="page" href="/faq">FAQ</Link>
                         </li>
                         <li className={`nav-item ${isScrolled ? "py-2" : "py-3"}`}>
                             <Link className={`nav-link  ${textColor}`} aria-current="page" href="/tentang-kami">TENTANG KAMI</Link>

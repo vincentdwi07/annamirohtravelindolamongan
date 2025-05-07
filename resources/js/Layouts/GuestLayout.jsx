@@ -3,14 +3,14 @@ import { Link } from '@inertiajs/react';
 
 export default function GuestLayout({ children }) {
     return (
-        <div className="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0">
-            <div>
-                <Link href="/">
-                    <ApplicationLogo className="h-20 w-20 fill-current text-gray-500" />
-                </Link>
-            </div>
-
-            <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg">
+        <div className="d-flex justify-content-center align-items-center min-vh-100" style={{ backgroundColor: "#fff2d7" }}>
+            <div className="card shadow-sm p-4" style={{ maxWidth: '400px', width: '100%' }}>
+                <div className="text-center mb-4">
+                    <Link href="/">
+                        {/* Ganti logo sesuai kebutuhan */}
+                        <img src="./user/logo.png" alt="Logo" width="80" />
+                    </Link>
+                </div>
                 {children}
             </div>
         </div>

@@ -18,7 +18,7 @@ export default function Flipbook() {
     } else if (window.innerWidth > 768 && window.innerWidth <= 1200) {
       setFlipPageWidth("350");
     } else {
-      setFlipPageWidth("150");
+      setFlipPageWidth("170");
     }
   }, []);
 
@@ -28,7 +28,7 @@ export default function Flipbook() {
     } else if (window.innerWidth > 768 && window.innerWidth <= 1200) {
       setFlipPageHeight("500");
     } else {
-      setFlipPageHeight("210");
+      setFlipPageHeight("270");
     }
   }, []);
 
@@ -55,8 +55,9 @@ export default function Flipbook() {
           ref={flipbookRef} // Pastikan flipbookRef diterapkan pada ReactPageflip
           width={flipPageWidth}
           height={flipPageHeight}
-          singlePage={true}
-          orientation="horizontal"
+          size="stretch"
+          usePortrait={true}
+          orientation="landscape"
         >
           {pages.map((page, index) => (
             <div className="page" key={index}>
@@ -70,9 +71,14 @@ export default function Flipbook() {
         </ReactPageflip>
       </div>
 
-      <div className="d-flex w-100 justify-content-center gap-2 mt-3">
-        <div className="benefit-custom-btn" onClick={prevButtonFlip}><i className="bi bi-arrow-left-circle-fill"></i></div>
-        <div className="benefit-custom-btn" onClick={nextButtonFlip}><i className="bi bi-arrow-right-circle-fill"></i></div>
+      <div className="d-flex w-100 justify-content-between mt-3">
+        <div className="d-flex gap-2">
+          <div className="benefit-custom-btn" onClick={prevButtonFlip}><i className="bi bi-arrow-left-circle-fill"></i></div>
+          <div className="benefit-custom-btn" onClick={nextButtonFlip}><i className="bi bi-arrow-right-circle-fill"></i></div>
+        </div>
+        <div className="d-flex align-items-center">
+          <a className="btn-download-flipbook" href="/user/Destinasi Umroh An Namiroh.pdf" download rel="noopener noreferrer">Download Buku<i className="bi ms-2 p-0 bi-cloud-arrow-down-fill"></i></a>
+        </div>
       </div>
     </>
   );
