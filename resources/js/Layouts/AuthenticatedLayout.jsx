@@ -14,7 +14,7 @@ export default function AuthenticatedLayout({ header, children }) {
             <nav className="navbar navbar-expand-lg py-3 navbar-light bg-white border-bottom">
                 <div className="container">
                     <Link className="navbar-brand d-flex align-items-center" href="/">
-                        <img src="./user/logo.png" style={{ width: "100px" }} alt="" />
+                        <img src="/user/logo.png" style={{ width: "100px" }} alt="" />
                     </Link>
 
                     <button
@@ -44,22 +44,22 @@ export default function AuthenticatedLayout({ header, children }) {
                                 </NavLink>
                                 <NavLink
                                     className="nav-link me-3 nav-link-admin text-black"
-                                    href={route('dashboard')}
-                                    active={route().current('AdminHaji')}
+                                    href={route('admin.haji')}
+                                    active={route().current('admin.haji')}
                                 >
                                     Haji
                                 </NavLink>
                                 <NavLink
                                     className="nav-link me-3 nav-link-admin text-black"
-                                    href={route('dashboard')}
-                                    active={route().current('AdminBadal')}
+                                    href={route('admin.badal')}
+                                    active={route().current('admin.badal')}
                                 >
                                     Badal
                                 </NavLink>
                                 <NavLink
                                     className="nav-link me-3 nav-link-admin text-black"
-                                    href={route('dashboard')}
-                                    active={route().current('AdminBlog')}
+                                    href={route('admin.blog.index')}
+                                    active={route().current('admin.blog.index')}
                                 >
                                     Blog
                                 </NavLink>

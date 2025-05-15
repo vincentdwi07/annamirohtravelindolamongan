@@ -13,5 +13,6 @@ class Haji extends Model
         'kategori',
         'harga',
         'konten',
+        'img_url',
     ];
 }

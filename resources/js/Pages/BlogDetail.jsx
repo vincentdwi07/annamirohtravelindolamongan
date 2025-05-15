@@ -38,8 +38,7 @@ export default function BlogDetail(){
                             <h1 className="title" style={{ wordBreak: 'break-word' }}>{blog.title}</h1>
                             <p className="text-secondary">Ditulis pada {formatDate(blog.created_at)}</p>
                             <img src={blog.img_url} alt="" />
-                            <div className="mt-3 blog-content">
-                                {blog.content}
+                            <div dangerouslySetInnerHTML={{ __html: (blog.content) }} className="mt-3 blog-content">
                             </div>
                         </div>
                         <div className="col-12 p-0 col-lg-4 col-md-5">
@@ -56,9 +55,9 @@ export default function BlogDetail(){
                                             <img src={other.img_url} alt={other.title} className="rounded" />
                                         </div>
                                         <div>
-                                            <h5 className="title m-0 p-0" style={{ wordBreak: 'break-word' }}>{truncateText(other.content, 15)}</h5>
+                                            <h5 className="title m-0 p-0" style={{ wordBreak: 'break-word' }}>{truncateText(other.title, 15)}</h5>
                                             <p className="text-secondary m-0 p-0">{formatDate(other.created_at)}</p>
-                                            <p className="m-0 p-0 blog-content">{truncateText(other.content, 50)}</p>
+                                            <div dangerouslySetInnerHTML={{ __html:truncateText(other.content, 50)  }}></div>
                                         </div>
                                     </div>
                                 ))

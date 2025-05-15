@@ -65,9 +65,9 @@ export default function Dashboard() {
       <Head title="Dashboard" />
 
       <div style={{ paddingInline: "5em" }}>
-        <div className="card-body text-dark">
+        <div className="card-body text-dark mt-4">
           <div className="d-flex justify-content-between w-100">
-            <h3 className="fw-bold text-hijau">Pesanan Jamaah</h3>
+            <h2 className="fw-bold text-hijau">Pesanan Jamaah</h2>
             <form className="d-flex" role="search">
               <input 
                 className="form-control" 
@@ -84,7 +84,7 @@ export default function Dashboard() {
         <div className="mt-4">
           {filteredPesanan.length === 0 ? (
             <div className="text-start text-black fs-5 mt-4">
-              <p className="mt-2">Data tidak ditemukan</p>
+              <p className="mt-2">Tidak ada pesanan baru</p>
             </div>
           ):(
             filteredPesanan.map((item, index) =>(

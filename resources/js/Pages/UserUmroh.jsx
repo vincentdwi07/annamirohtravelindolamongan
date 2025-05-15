@@ -8,17 +8,19 @@ import Footer from "@/Components/user/UserFooter";
 export default function UserUmroh() {
     const { umroh, kategori } = usePage().props;
 
-    const [bulanDipilih, setBulanDipilih] = useState("Januari");
+    const [bulanDipilih, setBulanDipilih] = useState("Semua");
 
     const daftarBulan = [
-        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Semua", "Januari", "Februari", "Maret", "April", "Mei", "Juni",
         "Juli", "Agustus", "September", "Oktober", "November", "Desember"
     ];
 
     // Filter umroh berdasarkan bulan yang dipilih
-    const filteredUmroh = umroh.filter((item) => 
-        item.periode.toLowerCase().includes(bulanDipilih.toLowerCase())
-    );
+    const filteredUmroh = bulanDipilih === "Semua"
+        ? umroh
+        : umroh.filter((item) =>
+            item.periode.toLowerCase().includes(bulanDipilih.toLowerCase())
+        );
 
     return (
         <>
@@ -29,12 +31,12 @@ export default function UserUmroh() {
                 <div className="d-flex flex-wrap justify-content-between align-items-center">
                     <h1 className="title">Paket Umroh {kategori}</h1>
                     <div className="d-flex align-items-start">
-                        <p className="p-0 m-0"> <i className="bi bi-calendar3 me-1"></i> Filter Berdasarkan Bulan</p>
+                        <p className="p-0 m-0"><i className="bi bi-calendar3 me-1"></i> Filter Berdasarkan Bulan</p>
                         <div className="dropdown">
                             <button className="filter-bulan-umroh dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {bulanDipilih}
                             </button>
-                            <ul className="dropdown-menu">
+                            <ul className="dropdown-menu dropdown-menu-end">
                                 {daftarBulan.map((bulan) => (
                                     <li key={bulan}>
                                         <button
@@ -73,12 +75,11 @@ export default function UserUmroh() {
                                     <h3 className="text-center">Paket Umroh Tidak Ada untuk Bulan {bulanDipilih}</h3>
                                 </div>
                             )
-                        ) : 
+                        ) : (
                             <div className="text-center umroh-not-found">
                                 <h3>Mohon Maaf Paket Umroh {kategori} Belum Tersedia</h3>
                             </div>
-                        } 
-                        
+                        )}
                     </div>
                 </div>
                 <h1 className="title">Paket Umroh Lainnya</h1>

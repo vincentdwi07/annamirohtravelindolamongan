@@ -3,81 +3,65 @@ import { usePage, router } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function AdminUmroh() {
-  const { umroh } = usePage().props;
-  const [filterKategori, setFilterKategori] = useState('Semua');
-
-  const kategoriList = [
-    'Semua',
-    'Promo',
-    'Reguler',
-    'Ekonomis',
-    'Plus',
-    'Premium',
-    'Eksklusif',
-    'Umroh + Tour'
-  ];
-
-  const handleFilterChange = (e) => {
-    setFilterKategori(e.target.value);
-  };
-
-  const filteredUmroh = filterKategori === 'Semua'
-    ? umroh
-    : umroh.filter((item) => item.kategori === filterKategori);
-
+export default function AdminBlog() {
+  const { blog } = usePage().props;
+  
   const handleDetail = (id) => {
-    router.get(route('admin.umroh.detail', id));
+    router.get(route('admin.blog.show', id));
   };
 
   const handleAddNew = () => {
-    router.get(route('umroh.create'));
+    router.get(route('admin.blog.create'));
   };
 
-  const handleDelete = (id) => {  // Terima parameter id
-      if (confirm('Apakah Anda yakin ingin menghapus paket Umroh ini?')) {
-          router.delete(route('admin.umroh.destroy', id), {  // Gunakan id yang diterima
-              preserveScroll: true,
-              onSuccess: () => {
-                  // Refresh halaman untuk memperbarui daftar
-                  window.location.reload();
-              },
-              onError: (errors) => {
-                  console.error('Error deleting:', errors);
-                  alert('Gagal menghapus paket Umroh. Silakan coba lagi.');
-              }
-          });
-      }
+  const handleDelete = (id) => {
+    if (confirm('Apakah Anda yakin ingin menghapus blog ini?')) {
+      router.delete(route('admin.blog.destroy', id), {
+        preserveScroll: true,
+        onSuccess: () => {
+          window.location.reload();
+        },
+        onError: (errors) => {
+          console.error('Error deleting:', errors);
+          alert('Gagal menghapus blog. Silakan coba lagi.');
+        }
+      });
+    }
   };
-  
+
+  // Function to truncate content to max 150 characters
+  const truncateContent = (content, maxLength = 150) => {
+    if (content.length <= maxLength) return content;
+    return content.substring(0, maxLength) + '...';
+  };
+
   return (
     <AuthenticatedLayout>
-      <Head title="Admin Umroh" />
+      <Head title="Admin Blog" />
       <div className="container py-4">
         {/* Header */}
         <div className="d-flex justify-content-between align-items-center mb-4">
-          <h2 className="fw-bold text-hijau">Daftar Paket Umroh</h2>
-          <select
-            className="form-select w-auto"
-            value={filterKategori}
-            onChange={handleFilterChange}
-          >
-            {kategoriList.map((kategori) => (
-              <option key={kategori} value={kategori}>{kategori}</option>
-            ))}
-          </select>
+          <h2 className="fw-bold text-hijau">Daftar Blog</h2>
         </div>
 
-        {/* Daftar Kartu Umroh */}
+        {/* Daftar Kartu Blog */}
         <div className="row">
-          {filteredUmroh.length > 0 ? (
-            filteredUmroh.map((item) => (
+          {blog.length > 0 ? (
+            blog.map((item) => (
               <div className="col-md-3 mb-4" key={item.id}>
                 <div className="card h-100 position-relative shadow-sm">
-                  <img src={item.img_url} className="card-img-top" alt={item.title} />
+                  <img 
+                    src={item.img_url} 
+                    className="card-img-top" 
+                    alt={item.title}
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
                   <div className="card-body">
                     <h5 className="card-title fw-bold text-hijau">{item.title}</h5>
-                    <p className="card-text mb-5 text-black">{item.kategori}</p>
+                    <div
+                        className="card-text mb-5 text-black"
+                        dangerouslySetInnerHTML={{ __html: truncateContent(item.content) }}
+                    ></div>
                     <div className="position-absolute bottom-0 end-0 m-3">
                       <div className="d-flex gap-2 justify-content-end">
                         <button
@@ -99,7 +83,7 @@ export default function AdminUmroh() {
               </div>
             ))
           ) : (
-            <p className="text-muted">Tidak ada paket umroh ditemukan.</p>
+            <p className="text-muted">Tidak ada blog ditemukan.</p>
           )}
         </div>
 

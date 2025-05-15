@@ -3,13 +3,57 @@ import Footer from "@/Components/user/UserFooter"
 import FloatWhatsappButton from "@/Components/user/FloatWhatsappButton"
 import { Head } from "@inertiajs/react"
 import { usePage } from "@inertiajs/react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useForm } from "@inertiajs/react";
+
+
+const Toast = ({ show, message, type, onClose }) => {
+    useEffect(() => {
+        if (show) {
+            const timer = setTimeout(() => {
+                onClose();
+            }, 5000); // Auto close after 5 seconds
+            
+            return () => clearTimeout(timer);
+        }
+    }, [show, onClose]);
+    
+    if (!show) return null;
+    
+    return (
+        <div className={`toast-notification ${type}`}>
+            <div className="toast-content">
+                <div className="toast-icon">
+                    {type === 'success' && <i className="bi bi-check-circle-fill"></i>}
+                    {type === 'error' && <i className="bi bi-exclamation-circle-fill"></i>}
+                </div>
+                <div className="toast-message">{message}</div>
+                <button className="toast-close" onClick={onClose}>
+                    <i className="bi bi-x"></i>
+                </button>
+            </div>
+        </div>
+    );
+};
+
+
 
 export default function Haji(){
     const { haji, kategori } = usePage().props;
     
-
+    if (!haji) {
+    return (
+        <>
+            <UserNavbar isForceBlack={true} />
+            <FloatWhatsappButton />
+            <div className="haji-page d-flex align-items-center justify-content-center mx-3 mb-5 mx-lg-5" style={{ height: "50vh" }}>
+                <h1 className="title text-black fw-normal">Mohon maaf untuk Haji {kategori} belum tersedia</h1>
+            </div>
+            <Footer />
+            <Head title="Haji" />
+        </>
+    );
+}
     const [active, setActive] = useState({
         nama: false,
         whatsapp: false,
@@ -17,6 +61,16 @@ export default function Haji(){
         catatan: false
     });
 
+
+        const [toast, setToast] = useState({
+        show: false,
+        message: '',
+        type: 'success'
+    });
+    
+    const closeToast = () => {
+        setToast(prev => ({ ...prev, show: false }));
+    };
 
     const handleFocus = (field) => {
         setActive(prev => ({ ...prev, [field]: true }));
@@ -43,29 +97,37 @@ export default function Haji(){
         // Use the useForm hook's post method
         post('/submit-pesanan', {
             onSuccess: () => {
-                alert('Pendaftaran berhasil!');
+                // Show success toast instead of alert
+                setToast({
+                    show: true,
+                    message: 'Pendaftaran berhasil! Tim kami akan segera menghubungi Anda.',
+                    type: 'success'
+                });
+            },
+            onError: (errors) => {
+                // Show error toast when validation fails
+                setToast({
+                    show: true,
+                    message: 'Gagal mendaftar. Silakan periksa formulir Anda.',
+                    type: 'error'
+                });
             }
         });
     };
-
-    if (!haji) {
-        return (
-            <>
-                <UserNavbar isForceBlack={true} />
-                <FloatWhatsappButton />
-                <div className="haji-page d-flex align-items-center justify-content-center mx-3 mb-5 mx-lg-5" style={{ height: "50vh" }}>
-                    <h1 className="title text-black fw-normal">Mohon maaf untuk Haji {kategori} belum tersedia</h1>
-                </div>
-                <Footer />
-                <Head title="Haji" />
-            </>
-        );
-    }
 
     return(
         <>
             <UserNavbar isForceBlack={true}/>
             <FloatWhatsappButton/>
+
+            {/* Toast notification */}
+            <Toast 
+                show={toast.show}
+                message={toast.message}
+                type={toast.type}
+                onClose={closeToast}
+            />
+
             <div className="haji-page mx-3 mb-5 mx-lg-5">
                 <div className="container-fluid m-0">
                     <div className="row">
@@ -90,7 +152,7 @@ export default function Haji(){
                                 opacity: 1
                             }} />
 
-                           {haji.konten}
+                           <div dangerouslySetInnerHTML={{ __html: haji.konten }}></div>
                         </div>
                     </div>
                 </div>
@@ -148,7 +210,7 @@ export default function Haji(){
                                     className="form-control"
                                     id="email"
                                     name="email"
-                                    placeholder="Masukkan email Anda"
+                                    placeholder="Masukkan email Anda (Kosongkan jika tidak ada)"
                                     value={data.email}
                                     onChange={e => setData('email', e.target.value)}
                                     onFocus={() => handleFocus("email")}
@@ -187,6 +249,80 @@ export default function Haji(){
 
             <Footer/>
             <Head title="Haji"/>
+
+            <style jsx>{`
+                .toast-notification {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    min-width: 300px;
+                    max-width: 400px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                    animation: slide-in 0.3s ease-out forwards;
+                }
+                
+                @keyframes slide-in {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                
+                .toast-notification.success {
+                    background-color: #e7f6ea;
+                    border-left: 5px solid #28a745;
+                }
+                
+                .toast-notification.error {
+                    background-color: #fbedee;
+                    border-left: 5px solid #dc3545;
+                }
+                
+                .toast-content {
+                    display: flex;
+                    align-items: center;
+                    padding: 15px;
+                }
+                
+                .toast-icon {
+                    font-size: 20px;
+                    margin-right: 12px;
+                }
+                
+                .success .toast-icon {
+                    color: #28a745;
+                }
+                
+                .error .toast-icon {
+                    color: #dc3545;
+                }
+                
+                .toast-message {
+                    flex: 1;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+                
+                .toast-close {
+                    background: none;
+                    border: none;
+                    font-size: 16px;
+                    cursor: pointer;
+                    opacity: 0.7;
+                    transition: opacity 0.2s;
+                    color: #555;
+                }
+                
+                .toast-close:hover {
+                    opacity: 1;
+                }
+            `}</style>
         </>
     )
 }

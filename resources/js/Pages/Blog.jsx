@@ -59,7 +59,7 @@ export default function Blog() {
                                 <img src={mainBlog.img_url} alt={mainBlog.title} />
                                 <h3 className="title">{mainBlog.title}</h3>
                                 <p className="m-0 p-0 text-secondary">{formatDate(mainBlog.created_at)}</p>
-                                <p>{truncateText(mainBlog.content, 200)}</p>
+                                <div dangerouslySetInnerHTML={{ __html: truncateText(mainBlog.content, 200)  }}></div>
                                 <a className="btn-blog-container" href={`/blog-detail?id=${mainBlog.id}`}>Lihat Selengkapnya</a>
                             </div>
                         </div>
@@ -82,7 +82,7 @@ export default function Blog() {
                                         <div>
                                             <h3 className="title">{blog.title}</h3>
                                             <p className="m-0 p-0 text-secondary">{formatDate(blog.created_at)}</p>
-                                            <p>{truncateText(mainBlog.content, 150)}</p>
+                                            <div dangerouslySetInnerHTML={{ __html: truncateText(mainBlog.content, 150) }}></div>
                                         </div>
                                         <a className="d-inline-block d-lg-none btn-blog-container" href={`/blog-detail?id=${blog.id}`}>
                                             Lihat Selengkapnya
@@ -108,7 +108,7 @@ export default function Blog() {
                                 <img src={blog.img_url} alt={blog.title} />
                                 <h3 className="title">{blog.title}</h3>
                                 <p className="m-0 p-0 text-secondary">{formatDate(blog.created_at)}</p>
-                                <p>{truncateText(mainBlog.content, 200)}</p>
+                                <div className='mb-3' dangerouslySetInnerHTML={{ __html: truncateText(blog.content, 150) }}></div>
                                 <a className="btn-blog-container" href={`/blog-detail?id=${blog.id}`}>Lihat Selengkapnya</a>
                             </div>
                         ))}
