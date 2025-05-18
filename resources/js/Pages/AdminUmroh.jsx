@@ -15,7 +15,8 @@ export default function AdminUmroh() {
     'Plus',
     'Premium',
     'Eksklusif',
-    'Umroh + Tour'
+    'Tour',
+    'Pusat'
   ];
 
   const handleFilterChange = (e) => {

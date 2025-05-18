@@ -12,6 +12,7 @@ use App\Http\Controllers\HajiController;
 use App\Http\Controllers\BadalController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\DashboardController;
+use App\Models\umroh;
 
 // LOGIN
 // Route::get('/dashboard', function () {
@@ -29,11 +30,20 @@ Route::middleware('auth')->group(function () {
 
 // BERANDA
 Route::get('/', function () {
+    $ekonomis = Umroh::where('kategori', 'Ekonomis')->first();
+    $plus = Umroh::where('kategori', 'Plus')->first();
+    $eksklusif = Umroh::where('kategori', 'Eksklusif')->first();
+    
     return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'umrohSamples' => [
+            'ekonomis' => $ekonomis,
+            'plus' => $plus,
+            'eksklusif' => $eksklusif,
+        ],
     ]);
 });
 

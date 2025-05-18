@@ -123,7 +123,7 @@ export default function UmrohDetail({ umroh }) {
                 value={data.kategori}
                 onChange={(e) => setData('kategori', e.target.value)}
               >
-                {['Promo', 'Reguler', 'Ekonomis', 'Plus', 'Premium', 'Eksklusif', 'Umroh + Tour'].map((kategori) => (
+                {['Promo', 'Reguler', 'Ekonomis', 'Plus', 'Premium', 'Eksklusif', 'Tour', 'Pusat'].map((kategori) => (
                   <option key={kategori} value={kategori}>
                     {kategori}
                   </option>

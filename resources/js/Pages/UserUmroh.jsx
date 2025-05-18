@@ -6,7 +6,7 @@ import FloatWhatsappButton from "@/Components/user/FloatWhatsappButton";
 import Footer from "@/Components/user/UserFooter";
 
 export default function UserUmroh() {
-    const { umroh, kategori } = usePage().props;
+    const { umroh, kategori, umrohPusat } = usePage().props;
 
     const [bulanDipilih, setBulanDipilih] = useState("Semua");
 
@@ -15,10 +15,15 @@ export default function UserUmroh() {
         "Juli", "Agustus", "September", "Oktober", "November", "Desember"
     ];
 
-    // Filter umroh berdasarkan bulan yang dipilih
     const filteredUmroh = bulanDipilih === "Semua"
         ? umroh
         : umroh.filter((item) =>
+            item.periode.toLowerCase().includes(bulanDipilih.toLowerCase())
+        );
+
+    const filteredUmrohPusat = bulanDipilih === "Semua"
+        ? umrohPusat
+        : umrohPusat.filter((item) =>
             item.periode.toLowerCase().includes(bulanDipilih.toLowerCase())
         );
 
@@ -53,36 +58,62 @@ export default function UserUmroh() {
                 </div>
                 <div className="container-fluid p-0 m-0">
                     <div className="row p-0">
-                        {umroh.length > 0 ? (
-                            filteredUmroh.length > 0 ? (
-                                filteredUmroh.map((item) => (
-                                    <div key={item.id} className="col-12 col-md-6 col-xl-4 p-0">
-                                        <UmrohCard
-                                            img={item.img_url}
-                                            title={item.title}
-                                            price={item.price}
-                                            periode={item.periode}
-                                            hotelMekkah={item.hotel_mekkah}
-                                            hotelMadinah={item.hotel_madinah}
-                                            maskapai={item.maskapai}
-                                            seat={item.seat}
-                                            btn_detail={item.id}
-                                        />
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="text-center umroh-not-found">
-                                    <h3 className="text-center">Paket Umroh Tidak Ada untuk Bulan {bulanDipilih}</h3>
-                                </div>
-                            )
-                        ) : (
-                            <div className="text-center umroh-not-found">
-                                <h3>Mohon Maaf Paket Umroh {kategori} Belum Tersedia</h3>
+
+                        {/* Bagian Paket Umroh Umum */}
+                        {filteredUmroh.length > 0 ? (
+                        filteredUmroh.map((item) => (
+                            <div key={item.id} className="col-12 col-md-6 col-xl-4 p-0">
+                            <UmrohCard
+                                img={item.img_url}
+                                title={item.title}
+                                price={item.price}
+                                periode={item.periode}
+                                hotelMekkah={item.hotel_mekkah}
+                                hotelMadinah={item.hotel_madinah}
+                                maskapai={item.maskapai}
+                                seat={item.seat}
+                                btn_detail={item.id}
+                            />
                             </div>
+                        ))
+                        ) : (
+                        <div className="text-center umroh-not-found col-12">
+                            <h3>Paket Umroh {kategori} Tidak Ada untuk Bulan {bulanDipilih}</h3>
+                        </div>
                         )}
+
+                        {/* Bagian Paket Umroh Pusat */}
+                        {filteredUmrohPusat.length > 0 ? (
+                        <>
+                            <h1 className="title mt-5">Paket Umroh Lainnya</h1>
+                            <div className="container-fluid p-0 m-0">
+                            <div className="row p-0">
+                                {filteredUmrohPusat.map((item) => (
+                                <div key={`pusat-${item.id}`} className="col-12 col-md-6 col-xl-4 p-0">
+                                    <UmrohCard
+                                    img={item.img_url}
+                                    title={item.title}
+                                    price={item.price}
+                                    periode={item.periode}
+                                    hotelMekkah={item.hotel_mekkah}
+                                    hotelMadinah={item.hotel_madinah}
+                                    maskapai={item.maskapai}
+                                    seat={item.seat}
+                                    btn_detail={item.id}
+                                    />
+                                </div>
+                                ))}
+                            </div>
+                            </div>
+                        </>
+                        ) : (
+                        <div className="text-center umroh-not-found col-12 mt-4">
+                            <h3>Paket Umroh Pusat Tidak Ada untuk Bulan {bulanDipilih}</h3>
+                        </div>
+                        )}
+
                     </div>
                 </div>
-                <h1 className="title">Paket Umroh Lainnya</h1>
             </div>
             <Footer />
         </>

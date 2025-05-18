@@ -285,11 +285,6 @@ export default function UserUmrohDetail(){
                         </form>
 
                     </div>
-
-                    {/* PAKET PUSAT */}
-                    <div className="paket-umroh-lainnya mt-5">
-                        <h1 className="title">Paket Umroh Lainnya</h1>
-                    </div>
                 </div>
             </div>
             <Footer />

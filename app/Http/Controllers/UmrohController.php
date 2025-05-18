@@ -20,11 +20,15 @@ class UmrohController extends Controller
             $umroh = Umroh::all();
         }
 
+        $umrohPusat = Umroh::whereRaw('LOWER(TRIM(kategori)) = ?', ['pusat'])->get();
+
         return inertia('UserUmroh', [
             'umroh' => $umroh,
             'kategori' => $kategori,
+            'umrohPusat' => $umrohPusat,
         ]);
     }
+
 
     public function indexAdmin(Request $request)
     {
@@ -56,7 +60,7 @@ class UmrohController extends Controller
             'img_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'title' => 'required|string|max:255',
             'price' => 'required|string',
-            'kategori' => 'required|string|in:Promo,Reguler,Ekonomis,Plus,Premium,Eksklusif,Umroh + Tour',
+            'kategori' => 'required|string|in:Promo,Reguler,Ekonomis,Plus,Premium,Eksklusif,Tour,Pusat',
             'periode' => 'required|string',
             'seat' => 'required|integer|min:0',
         ]);

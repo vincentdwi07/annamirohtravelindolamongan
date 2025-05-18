@@ -86,7 +86,8 @@ export default function AdminAddUmroh() {
     'Plus', 
     'Premium', 
     'Eksklusif', 
-    'Umroh + Tour'
+    'Tour',
+    'Pusat'
   ];
 
   // Konfigurasi untuk React Quill

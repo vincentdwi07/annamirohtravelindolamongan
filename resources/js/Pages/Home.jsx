@@ -1,4 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react';
 import UserNavbar from '@/Components/user/UserNavbar';
 import HeroImageCarousel from '@/Components/user/HeroImageCarousel';
 import Airline from '@/Components/user/Airline';
@@ -11,6 +12,8 @@ import FloatWhatsappButton from '@/Components/user/FloatWhatsappButton';
 import Flipbook from '@/Components/user/Flipbook';
 
 export default function Home(){
+    const { umrohSamples } = usePage().props;
+
     return(
         <>
             <Head title="Home"/>
@@ -61,58 +64,75 @@ export default function Home(){
 
             {/* PAKET UMROH HOME */}
             <div className="paket-umroh-home mx-1 mx-lg-5 mb-5">
-                <div className="d-flex flex-column align-items-center w-100 justify-content-center position-relative ">
-                    <h1 className='title'>Paket Umroh</h1>
-                    <p className='text-center title-desc'>
-                        Kami hadirkan paket umroh dengan pelayanan maksimal dan fasilitas terbaik untuk mendukung ibadah yang khusyuk dan nyaman, bersama pendamping berpengalaman
+                <div className="d-flex flex-column align-items-center w-100 justify-content-center position-relative">
+                    <h1 className="title">Paket Umroh</h1>
+                    <p className="text-center title-desc">
+                    Kami hadirkan paket umroh dengan pelayanan maksimal dan fasilitas terbaik untuk mendukung ibadah yang khusyuk dan nyaman, bersama pendamping berpengalaman
                     </p>
                 </div>
-                <div className="container">
 
-                <div className="row justify-content-between mt-0">
-                    <div className="col-12 p-0 col-md-6 col-xl-4">
+                <div className="container">
+                    <div className="row justify-content-between mt-0">
+                    {/* EKONOMIS */}
+                    {umrohSamples.ekonomis && (
+                        <div className="col-12 p-0 col-md-6 col-xl-4">
                         <UmrohCard
-                            img="./user/umroh-card-img/PAKET UMROH PROMO KELUARGA.jpeg"
-                            title="Paket Promo Keluarga 12 Hari"
-                            price="33.200.000"
-                            periode="15 September 2025 - 31 Januari 2026"
-                            hotelMekkah="Al Qiswah (5N)"
-                            hotelMadinah="Burj Mawaddah (5N)"
-                            maskapai="Scoot"
-                            seat="30"
+                            img={umrohSamples.ekonomis.img_url}
+                            title={umrohSamples.ekonomis.title}
+                            price={umrohSamples.ekonomis.price}
+                            periode={umrohSamples.ekonomis.periode}
+                            hotelMekkah={umrohSamples.ekonomis.hotel_mekkah}
+                            hotelMadinah={umrohSamples.ekonomis.hotel_madinah}
+                            maskapai={umrohSamples.ekonomis.maskapai}
+                            seat={umrohSamples.ekonomis.seat}
+                            btn_detail={umrohSamples.ekonomis.id}
                         />
-                    </div>
-                    <div className="col-12 p-0 col-md-6 col-xl-4">
+                        </div>
+                    )}
+
+                    {/* PLUS */}
+                    {umrohSamples.plus && (
+                        <div className="col-12 p-0 col-md-6 col-xl-4">
                         <UmrohCard
-                            img="./user/umroh-card-img/EXCLUSIVE.png"
-                            title="Paket Exclusive 16 Hari"
-                            price="41.650.000"
-                            periode="9 Agustus 2025"
-                            hotelMekkah="Makkah Tower (5N)"
-                            hotelMadinah="Al Ashar Golden T (9N)"
-                            maskapai="Garuda"
-                            seat="30"
+                            img={umrohSamples.plus.img_url}
+                            title={umrohSamples.plus.title}
+                            price={umrohSamples.plus.price}
+                            periode={umrohSamples.plus.periode}
+                            hotelMekkah={umrohSamples.plus.hotel_mekkah}
+                            hotelMadinah={umrohSamples.plus.hotel_madinah}
+                            maskapai={umrohSamples.plus.maskapai}
+                            seat={umrohSamples.plus.seat}
+                            btn_detail={umrohSamples.plus.id}
                         />
-                    </div>
-                    <div className="col-12 p-0 col-md-6 col-xl-4">
+                        </div>
+                    )}
+
+                    {/* EKSKLUSIF */}
+                    {umrohSamples.eksklusif && (
+                        <div className="col-12 p-0 col-md-6 col-xl-4">
                         <UmrohCard
-                            img="./user/umroh-card-img/PLUS.png"
-                            title="Paket Plus 11 Hari"
-                            price="34.750.000"
-                            periode="19 Agustus 2025"
-                            hotelMekkah="Azka Shofa (6N)"
-                            hotelMadinah="Al Ashar Golden T (5N)"
-                            maskapai="Lion Air"
-                            seat="30"
+                            img={umrohSamples.eksklusif.img_url}
+                            title={umrohSamples.eksklusif.title}
+                            price={umrohSamples.eksklusif.price}
+                            periode={umrohSamples.eksklusif.periode}
+                            hotelMekkah={umrohSamples.eksklusif.hotel_mekkah}
+                            hotelMadinah={umrohSamples.eksklusif.hotel_madinah}
+                            maskapai={umrohSamples.eksklusif.maskapai}
+                            seat={umrohSamples.eksklusif.seat}
+                            btn_detail={umrohSamples.eksklusif.id}
                         />
+                        </div>
+                    )}
                     </div>
-                </div>
                 </div>
 
                 <div className="w-100 d-flex justify-content-center">
-                    <a className='btn-lainnya' href="">Lihat Paket Lainnya <span><i className="bi bi-arrow-right"></i></span></a>
+                    <a className="btn-lainnya" href="/paket-umroh">
+                    Lihat Paket Lainnya <span><i className="bi bi-arrow-right"></i></span>
+                    </a>
                 </div>
-            </div>
+                </div>
+
 
             {/* DESTINASI UMROH - FLIPBOOK*/}
             <div className="flipbook-home mx-3 mx-lg-5 px-0 px-lg-2" style={{ marginTop: "6em" }}>
