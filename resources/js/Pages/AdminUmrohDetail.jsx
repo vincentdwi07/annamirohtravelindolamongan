@@ -224,6 +224,17 @@ export default function UmrohDetail({ umroh }) {
               <ReactQuill
                 value={data.itenerary}
                 onChange={(value) => setData('itenerary', value)}
+                theme="snow"
+                modules={{
+                  toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'size': ['small', false, 'large', 'huge'] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link'],
+                    ['clean']
+                  ]
+                }}
               />
             ) : (
               <div dangerouslySetInnerHTML={{ __html: umroh.itenerary }} />
@@ -236,6 +247,17 @@ export default function UmrohDetail({ umroh }) {
               <ReactQuill
                 value={data.catatan}
                 onChange={(value) => setData('catatan', value)}
+                theme="snow"
+                modules={{
+                  toolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'size': ['small', false, 'large', 'huge'] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    ['link'],
+                    ['clean']
+                  ]
+                }}
               />
             ) : (
               <div dangerouslySetInnerHTML={{ __html: umroh.catatan }} />

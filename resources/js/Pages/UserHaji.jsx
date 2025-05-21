@@ -61,6 +61,11 @@ export default function Haji(){
         catatan: false
     });
 
+    const [activeTab, setActiveTab] = useState("tab1");
+
+    const handleTabClick = (tabName) => {
+        setActiveTab(tabName);
+    };
 
         const [toast, setToast] = useState({
         show: false,
@@ -130,29 +135,88 @@ export default function Haji(){
 
             <div className="haji-page mx-3 mb-5 mx-lg-5">
                 <div className="container-fluid m-0">
-                    <div className="row">
-                        <div className="gambar-kiri d-flex align-items-start justify-content-start col-12 col-md-5 p-0">
-                        <img
-                            style={{
-                                objectFit: "contain",
-                            }}
-                            src={haji.img_url}
-                            alt="Gambar"
-                            className=" haji-img"
-                        />
+                    <div className="row p-0 m-0">
+                        <div className="col-md-5 p-0 m-0 col-12">
+                            <img className="umroh-detail-img" src={haji.img_url} alt="" />
                         </div>
-
-                        <div className="konten-kanan ps-0 ps-md-3 col-12 col-md-7 hide-scrollbar " style={{ maxHeight: "100vh", overflowY: "auto" }}>
+                        <div className="col-md-7 ps-0 ps-lg-4 mt-3 mt-lg-0 m-0 p-0 col-12">
                             <h1 className="title">{haji.title}</h1>
-                            <h1 className="price">${haji.harga}<span className="fs-6 text-secondary fw-normal">/pax</span></h1>
-                            <hr style={{
-                                height: "2px",
-                                backgroundColor: "#09643b",  
-                                border: "none",              
-                                opacity: 1
-                            }} />
+                            <h1 className="price">
+                            {kategori === "Percepatan"
+                                ? `Rp${haji.harga}`
+                                : `$${haji.harga}`}
+                            <span className="fs-6 text-secondary fw-normal">/pax</span>
+                            </h1>
 
-                           <div dangerouslySetInnerHTML={{ __html: haji.konten }}></div>
+                            <div className="d-flex user-umroh-detail-tab mb-3">
+                                {["tab1", "tab2", "tab3"].map((tab, index) => (
+                                    <button
+                                        key={tab}
+                                        className={`btn-umroh-detail-tab ${activeTab === tab ? 'active' : 'not-active'}`}
+                                        onClick={() => handleTabClick(tab)}
+                                    >
+                                        {["Detail", "Itenerary", "Catatan Penting"][index]}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <div className="tab-content">
+                                {activeTab === "tab1" && (
+                                    <div>
+                                        {/* PERIODE */}
+                                        <div className="row m-0 p-0">
+                                            <div className="col-1 p-0" style={{ maxWidth: "20px", marginRight: "11px" }}>
+                                                <h5 className="m-0 umroh-card-logo p-0"><i className="bi bi-calendar3"></i></h5>
+                                            </div>
+                                            <div className="col-11 p-0 text-start d-flex flex-column">
+                                                <h5 className="umroh-card-logo m-0">Periode</h5>
+                                                <p className="p-0">{haji.periode}</p>
+                                            </div>
+                                        </div>
+                                        {/* HOTEL */}
+                                        <div className="row m-0 p-0">
+                                            <div className="col-1 p-0" style={{ maxWidth: "20px", marginRight: "11px" }}>
+                                                <h5 className="m-0 umroh-card-logo p-0"><i className="bi bi-building"></i></h5>
+                                            </div>
+                                            <div className="col-11 p-0 text-start d-flex flex-column">
+                                                <h5 className="umroh-card-logo m-0">Hotel</h5>
+                                                <p className="p-0 mb-0">{`Hotel Mekkah: ${haji.hotel_mekkah}`}</p>
+                                                <p className="p-0">{`Hotel Madinah: ${haji.hotel_madinah}`}</p>
+                                            </div>
+                                        </div>
+                                        {/* MASKAPAI */}
+                                        <div className="row m-0 p-0">
+                                            <div className="col-1 p-0" style={{ maxWidth: "20px", marginRight: "11px" }}>
+                                                <h5 className="m-0 umroh-card-logo p-0"><i className="bi bi-airplane"></i></h5>
+                                            </div>
+                                            <div className="col-11 p-0 text-start d-flex flex-column">
+                                                <h5 className="umroh-card-logo m-0">Maskapai</h5>
+                                                <p className="p-0">{haji.maskapai}</p>
+                                            </div>
+                                        </div>
+                                        {/* SISA KURSI */}
+                                        <div className="row m-0 p-0">
+                                            <div className="col-1 p-0" style={{ maxWidth: "20px", marginRight: "10px" }}>
+                                                <img style={{ width: "100%", zIndex: 2 }} src="./user/chair.svg" alt="" />
+                                            </div>
+                                            <div className="col-11 p-0 text-start d-flex flex-column">
+                                                <h5 className="umroh-card-logo m-0">Sisa Kursi</h5>
+                                                <p className="p-0 mb-0">{`${haji.seat} kursi`}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                                {activeTab === "tab2" && (
+                                    <div>
+                                        <div dangerouslySetInnerHTML={{ __html: haji.itenerary }} />
+                                    </div>
+                                )}
+                                {activeTab === "tab3" && (
+                                    <div>
+                                        <div dangerouslySetInnerHTML={{ __html: haji.catatan }} />
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>

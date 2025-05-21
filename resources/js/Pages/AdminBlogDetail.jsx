@@ -10,7 +10,7 @@ export default function AdminBlogDetail() {
   const [isEditing, setIsEditing] = useState(false);
 
   const { data, setData, post, processing, reset } = useForm({
-    img_url: '',
+    img_url: null,  // Default null, bukan empty string
     title: blog.title || '',
     content: blog.content || '',
     created_at: blog.created_at ? new Date(blog.created_at).toISOString().split('T')[0] : '',
@@ -23,23 +23,22 @@ export default function AdminBlogDetail() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const formData = new FormData();
     formData.append('_method', 'PUT');
 
-    // Hanya append data yang berubah
-    Object.keys(data).forEach(key => {
-      // Bandingkan dengan data asli
+    // Kirim data selain img_url
+    ['title', 'content', 'created_at'].forEach(key => {
       if (data[key] !== blog[key]) {
-        if (key === 'img_url' && data[key] instanceof File) {
-          formData.append(key, data[key]);
-        } else if (data[key] !== null && data[key] !== undefined) {
-          formData.append(key, data[key]);
-        }
+        formData.append(key, data[key]);
       }
     });
 
-    // Debug: log data yang akan dikirim
+    // Kirim img_url hanya kalau ada file baru
+    if (data.img_url instanceof File) {
+      formData.append('img_url', data.img_url);
+    }
+
     console.log('Data yang akan diupdate:');
     for (let [key, value] of formData.entries()) {
       console.log(key, value);
@@ -59,19 +58,13 @@ export default function AdminBlogDetail() {
     });
   };
 
-  const handleBack = () => {
-    router.get(route('admin.blog.index'));
-  };
-
   return (
     <AuthenticatedLayout>
       <Head title={blog.title} />
       <div className="container py-4">
-        {/* Header dengan tombol kembali dan edit */}
+        {/* Header dan tombol edit/cancel */}
         <div className="d-flex justify-content-between align-items-center mb-4">
-          <div className="d-flex align-items-center">
-            <h3 className='text-hijau fw-bold mb-0'>Detail Blog</h3>
-          </div>
+          <h3 className="text-hijau fw-bold mb-0">Detail Blog</h3>
           <button
             className={`btn ${isEditing ? 'btn-secondary' : 'btn-success'} d-flex align-items-center gap-2`}
             onClick={handleToggleEdit}
@@ -80,7 +73,6 @@ export default function AdminBlogDetail() {
           </button>
         </div>
 
-        {/* Form / Detail Content */}
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           {/* Gambar */}
           <div className="mb-4">
@@ -96,6 +88,7 @@ export default function AdminBlogDetail() {
                 <input
                   type="file"
                   className="form-control"
+                  accept="image/*"
                   onChange={(e) => setData('img_url', e.target.files[0])}
                 />
               </div>
@@ -150,9 +143,9 @@ export default function AdminBlogDetail() {
                 modules={{
                   toolbar: [
                     ['bold', 'italic', 'underline'],
-                    [{ 'size': ['small', false, 'large', 'huge'] }],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    [{ 'color': [] }, { 'background': [] }],
+                    [{ size: ['small', false, 'large', 'huge'] }],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    [{ color: [] }, { background: [] }],
                     ['link'],
                     ['clean']
                   ]
@@ -160,13 +153,11 @@ export default function AdminBlogDetail() {
                 style={{ minHeight: '200px', marginBottom: '50px' }}
               />
             ) : (
-              <div className="blog-content mt-4">
-                <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>
-              </div>
+              <div className="blog-content mt-4" dangerouslySetInnerHTML={{ __html: blog.content }}></div>
             )}
           </div>
 
-          {/* Tombol Simpan (hanya muncul saat edit) */}
+          {/* Tombol Simpan */}
           {isEditing && (
             <div className="d-flex justify-content-end mt-5">
               <button

@@ -1556,6 +1556,15 @@ scrollbar-width: none; /* Firefox */
     font-size: 1.5em;
 }
 
+.sold-out{
+    transform: rotate(345deg) translate(-50%, -50%);
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    z-index: 10;
+    width: 60%;
+}
+
 /* .dropdown-admin:hover{
     color: black !important;
     transform: none !important;

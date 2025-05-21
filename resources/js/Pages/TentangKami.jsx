@@ -133,7 +133,7 @@ export default function TentangKami(){
                                     </div>
                                     <div className="col-12 d-flex flex-column align-items-center justify-content-center owner-profile-words col-lg-8 col-md-6">
                                         <p>
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis inventore aspernatur, non perferendis dolores nulla laudantium vero voluptas voluptate voluptatem dolorem tempora suscipit quas sint magnam recusandae praesentium pariatur in.
+                                            Perlu Diketahui Kami Mendirikan PT An Namiroh Travelindo Agar Masyarakat Umat Islam Se-Indonesia Mudah untuk berangkat ke baitullah melaksanakan ibadah haji & umroh dengan harga yang sangat terjangkau dan pelayanan yang lebih baik, mudah urusannya, murah harganya, amanah pelaksanaannya.
                                         </p>
                                         <button type="button" className="btn-play-video d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <div className="p-0 m-0 d-flex align-items-center">

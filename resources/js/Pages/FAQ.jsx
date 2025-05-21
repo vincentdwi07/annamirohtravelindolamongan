@@ -146,8 +146,18 @@ export default function FAQ() {
                             <div className="accordion-body pt-0 ps-0" style={{ backgroundColor: "#fff2d7" }}>
                                 <ul className="mb-0 p-0" style={{ listStyleType: "none" }}>
                                     <li><span className="fw-bold">Fisik</span>: Vaksin meningitis, check-up dokter.</li>
-                                    <li><span className="fw-bold">Dokumen</span>: Paspor (masa berlaku minimal 6 bulan), visa, foto ukuran 4x6.</li>
-                                    <li><span className="fw-bold">Perlengkapan</span>: Lihat checklist lengkap di [link].</li>
+                                    <li><span className="fw-bold">Dokumen</span>: Paspor (masa berlaku minimal 6 bulan)</li>
+                                    <li><span className="fw-bold">Perlengkapan</span>:</li>
+                                    <li>Koper besar dan kecil</li>
+                                    <li>Tas passpor</li>
+                                    <li>Ihrom/mukenah</li>
+                                    <li>Sabuk/Sarung tangan</li>
+                                    <li>Batik</li>
+                                    <li>Songkok/jilbab</li>
+                                    <li>Buku Doa</li>
+                                    <li>Tas Sandal</li>
+                                    <li>Syal</li>
+                                    <li>Bantal Leher</li>
                                 </ul>
                             </div>
                         </div>
@@ -177,7 +187,6 @@ export default function FAQ() {
                                     <li>Fotocopy KTP berukuran A4.</li>
                                     <li>Fotocopy KK.</li>
                                     <li>Fotocopy Buku Nikah (bagi pasangan suami istri).</li>
-                                    <li>Pas Photo ukuran 4x6 sebanyak 3 lembar (background foto warna putih dengan fokus wajah 80%). Dibelakang foto harap dituliskan nama lengkap sesuai Paspor.</li>
                                     <li>Buku Kuning Suntik Meningitis (berlaku hingga tanggal kepulangan).</li>
                                     <li>Fotocopy Akta Kelahiran (khusus untuk anak berusia ≤ 17 tahun).</li>
                                 </ul>
@@ -264,7 +273,6 @@ export default function FAQ() {
                             <div className="accordion-body pt-0 ps-0" style={{ backgroundColor: "#fff2d7" }}>
                                 <ul className="mb-0">
                                     <li>Pembimbing dan Mutowwif.</li>
-                                    <li>Layanan kesehatan.</li>
                                     <li>Translator Arab-Indonesia.</li>
                                 </ul>
                             </div>
@@ -314,7 +322,7 @@ export default function FAQ() {
                             data-bs-parent="#accordionFlushExample"
                         >
                             <div className="accordion-body pt-0 ps-0" style={{ backgroundColor: "#fff2d7" }}>
-                                <p className="m-0">Umroh keluarga 3 + 1 (lihat brosur untuk info lebih lanjut).</p>
+                                <p className="m-0">Umroh Hemat 2 + 1 dan Umroh keluarga 3 + 1 (lihat brosur untuk info lebih lanjut).</p>
                             </div>
                         </div>
                     </div>
@@ -368,6 +376,7 @@ export default function FAQ() {
                             <div className="accordion-body pt-0 ps-0" style={{ backgroundColor: "#fff2d7" }}>
                                 <ul className="mb-0">
                                     <li>Transfer bank.</li>
+                                    <li>Cash.</li>
                                     <li>QRIS.</li>
                                 </ul>
                             </div>

@@ -30,9 +30,9 @@ Route::middleware('auth')->group(function () {
 
 // BERANDA
 Route::get('/', function () {
+    $promo = Umroh::where('kategori', 'Promo')->first();
     $ekonomis = Umroh::where('kategori', 'Ekonomis')->first();
-    $plus = Umroh::where('kategori', 'Plus')->first();
-    $eksklusif = Umroh::where('kategori', 'Eksklusif')->first();
+    $premium = Umroh::where('kategori', 'Premium')->first();
     
     return Inertia::render('Home', [
         'canLogin' => Route::has('login'),
@@ -40,9 +40,9 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
         'umrohSamples' => [
+            'promo' => $promo,
             'ekonomis' => $ekonomis,
-            'plus' => $plus,
-            'eksklusif' => $eksklusif,
+            'premium' => $premium,
         ],
     ]);
 });

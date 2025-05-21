@@ -1,3 +1,5 @@
+import SoldOut from "../SoldOut"
+
 export default function UmrohCard({img, title, price, periode, hotelMekkah, hotelMadinah, maskapai, seat, btn_detail}){
     return(
         <>
@@ -50,9 +52,18 @@ export default function UmrohCard({img, title, price, periode, hotelMekkah, hote
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex w-100 justify-content-center">
-                        <a className="detail-paket-btn" href={`/umroh-detail?id=${btn_detail}`}>Detail Paket</a>
-                    </div>
+                    {seat === 0 ? (
+                        <>
+                            <SoldOut/>
+                            <div className="d-flex w-100 justify-content-center">
+                                <div className="detail-paket-btn bg-danger" href={`/umroh-detail?id=${btn_detail}`}>Sold Out!</div>
+                            </div>
+                        </>
+                    ):(
+                        <div className="d-flex w-100 justify-content-center">
+                            <a className="detail-paket-btn" href={`/umroh-detail?id=${btn_detail}`}>Detail Paket</a>
+                        </div>
+                    )}
             </div>
         </>
     )

@@ -24,12 +24,11 @@ export default function Home(){
             <div className="home-cover">
                 <HeroImageCarousel/>
                 <h1 className='title'>Sahabat Terbaik dan Terpercaya Menuju Baitullah Bersama <br /><span style={{ color: "#09643b" }}>An Namiroh Travelindo</span></h1>
-                <Link className="btn-lihat-jadwal-umroh" href="">Lihat Jadwal Umroh</Link>
+                <Link className="btn-lihat-jadwal-umroh" href="/umroh?kategori=Promo">Lihat Jadwal Umroh</Link>
                 {/* <h2 className='tagline'>Mudah | Murah | Amanah</h2> */}
                 <div className="hero-social-media-group">
                     <a href="https://wa.me/6285649594417" target='blank'><i className='bi bi-whatsapp hero-social-media-icon'></i></a>
-                    <a  target='blank' href="https://www.instagram.com/an_namiroh_lamongan?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==
-"><i className='bi bi-instagram hero-social-media-icon'></i></a>
+                    <a  target='blank' href="https://www.instagram.com/an_namiroh_lamongan?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i className='bi bi-instagram hero-social-media-icon'></i></a>
                     <a  target='blank' href="https://www.tiktok.com/@an_namiroh.travel?is_from_webapp=1&sender_device=pc"><i className='bi bi-tiktok hero-social-media-icon'></i></a>
                     <a  target='blank' href="https://youtube.com/@pt.annamirohtravelindolamongan?si=CvwLGUJZ3WArWo-K"><i className='bi bi-youtube hero-social-media-icon'></i></a>
                     <a  target='blank' href="https://www.facebook.com/people/Annamiroh-Lamongan/pfbid0DAWFTp8Fim6fy2JUCFkWJE6BKLMYYwV7rQfBDAXRhMccjyvHnCwuanWNcRu6RXzkl/#"><i className='bi bi-facebook hero-social-media-icon'></i></a>
@@ -74,6 +73,23 @@ export default function Home(){
                 <div className="container">
                     <div className="row justify-content-between mt-0">
                     {/* EKONOMIS */}
+                    {umrohSamples.promo && (
+                        <div className="col-12 p-0 col-md-6 col-xl-4">
+                        <UmrohCard
+                            img={umrohSamples.promo.img_url}
+                            title={umrohSamples.promo.title}
+                            price={umrohSamples.promo.price}
+                            periode={umrohSamples.promo.periode}
+                            hotelMekkah={umrohSamples.promo.hotel_mekkah}
+                            hotelMadinah={umrohSamples.promo.hotel_madinah}
+                            maskapai={umrohSamples.promo.maskapai}
+                            seat={umrohSamples.promo.seat}
+                            btn_detail={umrohSamples.promo.id}
+                        />
+                        </div>
+                    )}
+
+                    {/* PLUS */}
                     {umrohSamples.ekonomis && (
                         <div className="col-12 p-0 col-md-6 col-xl-4">
                         <UmrohCard
@@ -90,36 +106,19 @@ export default function Home(){
                         </div>
                     )}
 
-                    {/* PLUS */}
-                    {umrohSamples.plus && (
-                        <div className="col-12 p-0 col-md-6 col-xl-4">
-                        <UmrohCard
-                            img={umrohSamples.plus.img_url}
-                            title={umrohSamples.plus.title}
-                            price={umrohSamples.plus.price}
-                            periode={umrohSamples.plus.periode}
-                            hotelMekkah={umrohSamples.plus.hotel_mekkah}
-                            hotelMadinah={umrohSamples.plus.hotel_madinah}
-                            maskapai={umrohSamples.plus.maskapai}
-                            seat={umrohSamples.plus.seat}
-                            btn_detail={umrohSamples.plus.id}
-                        />
-                        </div>
-                    )}
-
                     {/* EKSKLUSIF */}
-                    {umrohSamples.eksklusif && (
+                    {umrohSamples.premium && (
                         <div className="col-12 p-0 col-md-6 col-xl-4">
                         <UmrohCard
-                            img={umrohSamples.eksklusif.img_url}
-                            title={umrohSamples.eksklusif.title}
-                            price={umrohSamples.eksklusif.price}
-                            periode={umrohSamples.eksklusif.periode}
-                            hotelMekkah={umrohSamples.eksklusif.hotel_mekkah}
-                            hotelMadinah={umrohSamples.eksklusif.hotel_madinah}
-                            maskapai={umrohSamples.eksklusif.maskapai}
-                            seat={umrohSamples.eksklusif.seat}
-                            btn_detail={umrohSamples.eksklusif.id}
+                            img={umrohSamples.premium.img_url}
+                            title={umrohSamples.premium.title}
+                            price={umrohSamples.premium.price}
+                            periode={umrohSamples.premium.periode}
+                            hotelMekkah={umrohSamples.premium.hotel_mekkah}
+                            hotelMadinah={umrohSamples.premium.hotel_madinah}
+                            maskapai={umrohSamples.premium.maskapai}
+                            seat={umrohSamples.premium.seat}
+                            btn_detail={umrohSamples.premium.id}
                         />
                         </div>
                     )}
@@ -127,8 +126,8 @@ export default function Home(){
                 </div>
 
                 <div className="w-100 d-flex justify-content-center">
-                    <a className="btn-lainnya" href="/paket-umroh">
-                    Lihat Paket Lainnya <span><i className="bi bi-arrow-right"></i></span>
+                    <a className="btn-lainnya" href="/umroh?kategori=Promo">
+                        Lihat Paket Lainnya <span><i className="bi bi-arrow-right"></i></span>
                     </a>
                 </div>
                 </div>

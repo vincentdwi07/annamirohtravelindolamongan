@@ -30,7 +30,7 @@ export default function BadalDetail({ badal }) {
         // Hanya append data yang berubah
         Object.keys(data).forEach(key => {
             // Bandingkan dengan data asli
-            if (data[key] !== umroh[key]) {
+            if (data[key] !== badal[key]) {
                 if (key === 'img_url' && data[key] instanceof File) {
                     formData.append(key, data[key]);
                 } else if (data[key] !== null && data[key] !== undefined) {
@@ -45,7 +45,7 @@ export default function BadalDetail({ badal }) {
             console.log(key, value);
         }
 
-        router.post(route('admin.umroh.update', umroh.id), formData, {
+        router.post(route('admin.badal.update', badal.id), formData, {
             forceFormData: true,
             preserveScroll: true,
             onSuccess: () => {
